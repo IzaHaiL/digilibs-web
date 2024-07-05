@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Div dengan Header dan Border Bawah</title>
+    <style>
+        .plain-div {
+            border: 1px solid #000;
+            /* Warna border hitam */
+            padding: 10px;
+            /* Jarak dalam div */
+            width: 300px;
+            /* Lebar div */
+            margin: 0 auto;
+            /* Tengah-tengahkan div */
+        }
+
+        .header-div {
+            border: 1px solid #000;
+            /* Border hitam */
+            background-color: #f0f0f0;
+            /* Warna latar belakang header */
+            padding: 5px;
+            /* Jarak dalam header */
+            text-align: center;
+            /* Teks tengah */
+        }
+
+        .content {
+            padding: 5px;
+            /* Jarak dalam content */
+            margin-bottom: 5px;
+            /* Margin bawah untuk jarak antar div */
+        }
+
+        .sub-content {
+            padding: 1%;
+            /* Jarak dalam sub-content */
+            border-bottom: 1px solid #000;
+            /* Border bawah hitam */
+
+        }
+
+        .subber-content {
+            padding: 5px;
+            /* Jarak dalam subber-content */
+        }
+
+        .content-details {
+            display: flex;
+            /* Menggunakan flexbox */
+            justify-content: space-around;
+            padding-bottom: 5px;
+            /* Jarak di dalam div content */
+            margin-bottom: 5px;
+            /* Margin bawah untuk jarak antar div */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="plain-div">
+        <div class="header-div">
+            <h1>Header</h1>
+        </div>
+        <div class="content">
+            <div class="sub-content">
+                <div class="subber-content">
+                    <p>Aplikasi Android untuk Mencari SPBU, Masjid, dan Mushola Terdekat Menggunakan GPS</p>
+                </div>
+                <div class="content-details">
+                    <p>Tanggal</p>
+                    <p>Prodi</p>
+                    <p>Nama</p>
+                </div>
+            </div>
+            <div class="sub-content">
+                <div class="subber-content">
+                    <p>Aplikasi Android untuk Mencari SPBU, Masjid, dan Mushola Terdekat Menggunakan GPS</p>
+                </div>
+                <div class="content-details">
+                    <p>Tanggal</p>
+                    <p>Prodi</p>
+                    <p>Nama</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+    }
+    
+    .navbar-left {
+        display: flex;
+        align-items: center;
+    }
+    
+    .hamburger-menu {
+        font-size: 24px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    
+    .logo {
+        height: 40px;
+    }
+    
+    .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+    
+    .username {
+        margin-right: 10px;
+    }
+    
+    .profile-photo {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-button {
+        background-color: #333;
+        border: none;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown:hover .dropdown-button {
+        background-color: #555;
+    }
+    
+</style>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="hamburger-menu">
+                &#9776; <!-- Unicode for hamburger icon -->
+            </div>
+            <img src="https://cdn.discordapp.com/attachments/731292697964576833/1257535244966563913/png-transparent-telkom-university-international-office-telkom-education-foundation-private-university-university-miscellaneous-angle-text-thumbnail.png?ex=66856b36&is=668419b6&hm=3a96912bdf5a28f16944d7dae1af5a1d47757fc568229a8205a0cce4bb6d0c17&" alt="Telkom University Logo" class="logo">
+        </div>
+        <div class="navbar-right">
+            <span class="username">Nama User</span>
+            <img src="path/to/profile-photo.jpg" alt="Profile Photo" class="profile-photo">
+            <div class="dropdown">
+                <button class="dropdown-button">▼</button>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

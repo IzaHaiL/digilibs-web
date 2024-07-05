@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger Menu Sidebar with Centered Fixed Content and Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/src/public/frontend/mahasiswa/css/dashboard_mahasiswa_profile.css" />
+    <link rel="stylesheet" href="/src/public/frontend/mahasiswa/css/navbarsidebar.css" />
+</head>
+
+<body>
+    !-- NAVBAR --!
+
+    <div class="navbar">
+        <div class="navbar-left">
+        <a href="#" onclick="openNav()">☰</a>
+        <img class="navbar-profile-img"
+        src="/src/public/frontend/assets/logoitts.svg"
+        alt="Profile Picture">
+        </div>
+        <div class="navbar-right">
+            <span class="username">Nama User</span>
+            <img src="https://cdn.discordapp.com/attachments/731292697964576833/1258472748838031493/image.png?ex=66882b94&is=6686da14&hm=de69a0f40a691f880107bd941b8aa1f798bc8fe428a6ca0d0a090bf723516eac&" alt="Profile Photo" class="profile-photo">
+            <div class="navbar-profile-dropdown">
+                <button onclick="toggleProfileDropdown()">
+                    <i class="navbar-dropdown-arrow"></i>
+                </button>
+                <div id="navbar-profile-dropdown" class="navbar-profile-dropdown-content">
+                    <a href="halaman_utama.html">Halaman Utama</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    !-- Sidebar --!
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="sidebar-closebtn" onclick="closeNav()">&times;</a>
+        <a href="dashboard_mahasiswa.html"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="dashboard_mahasiswa_profile.html"><i class="fas fa-user"></i> Profile</a>
+        <a href="dashboard_mahasiswa_inputberkas.html"><i class="fas fa-envelope"></i> Input Berkas</a>
+    </div>
+
+    !-- Main content --!
+
+    <div id="main-wrapper">
+        <div class="dashboard-1">
+            <h1 class="dashboard-title">Profile</h1>
+            <div class="profile-picture">
+                <img id="pp-profile" src="https://cdn.discordapp.com/attachments/731292697964576833/1257535244966563913/png-transparent-telkom-university-international-office-telkom-education-foundation-private-university-university-miscellaneous-angle-text-thumbnail.png?ex=66856b36&is=668419b6&hm=3a96912bdf5a28f16944d7dae1af5a1d47757fc568229a8205a0cce4bb6d0c17"
+                    alt="Telkom University Logo">
+            </div>
+        </div>
+        <div class="dashboard-2">
+            <h1 class="dashboard-title">Biodata</h1>
+            <form action="/submit-form" method="POST" style="margin-top: 8px;">
+                <!-- Baris 1: Nama Lengkap -->
+                <label for="fullname">Nama Lengkap:</label><br>
+                <input type="text" id="fullname" name="fullname" style="width: 835px; margin-bottom: 8px;" required><br>
+
+                <!-- Baris 2: NIK dan NIM -->
+                <div style="display: flex; margin-bottom: 16px; ">
+                    <div style="flex: 1; margin-right: 8px;">
+                        <label for="nik">NIK:</label><br>
+                        <input type="text" id="nik" name="nik"
+                            style="width: 385px; margin-bottom: 8px; margin-top: 8px;" required><br>
+                    </div>
+                    <div style="flex: 1; margin-left: 8px;">
+                        <label for="nim">NIM:</label><br>
+                        <input type="text" id="nim" name="nim"
+                            style="width: 385px; margin-bottom: 8px; margin-top: 8px;" required><br>
+                    </div>
+                </div>
+
+                <!-- Baris 3: Tempat Lahir, Tanggal Lahir, Jenis Kelamin -->
+                <div style="display: flex; margin-bottom: 16px;">
+                    <div style="flex: 1; margin-right: 8px;">
+                        <label for="placeOfBirth">Tempat Lahir:</label><br>
+                        <input type="text" id="placeOfBirth" name="placeOfBirth"
+                            style="width: 249px; margin-bottom: 8px; margin-top: 8px;" required><br>
+                    </div>
+                    <div style="flex: 1; margin-right: 8px;">
+                        <label for="dateOfBirth">Tanggal Lahir:</label><br>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth"
+                            style="width: 249px;  margin-bottom: 8px; margin-top: 8px;" required><br>
+                    </div>
+                    <div style="flex: 1; margin-left: 8px;">
+                        <label for="gender">Jenis Kelamin:</label><br>
+                        <select id="gender" name="gender"
+                            style="width: 249px; height: 36px; margin-bottom: 8px; margin-top: 8px;" required>
+                            <option value="male">Laki-laki</option>
+                            <option value="female">Perempuan</option>
+                        </select><br>
+                    </div>
+                </div>
+
+                <!-- Baris 4: Fakultas dan Program Studi -->
+                <div style="display: flex; margin-bottom: 16px;">
+                    <div style="flex: 1; margin-right: 8px;">
+                        <label for="faculty">Fakultas:</label><br>
+                        <div class="autocomplete">
+                            <input type="text" id="facultySearch" name="facultySearch" placeholder="Pilih atau ketik fakultas..." autocomplete="off">
+                            <div class="autocomplete-items" id="facultyDropdown"></div>
+                        </div>
+                    </div>
+                    <div style="flex: 1; margin-left: 8px;">
+                        <label for="studyProgram">Program Studi:</label><br>
+                        <div class="autocomplete">
+                            <input type="text" id="studyProgramSearch" name="studyProgramSearch" placeholder="Pilih atau ketik program studi..." autocomplete="off">
+                            <div class="autocomplete-items" id="studyProgramDropdown"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Baris 5: Alamat -->
+                <label for="address">Alamat:</label><br>
+                <textarea id="address" name="address" rows="4" style="width: 385px; margin-bottom: 8px;"
+                    required></textarea><br>
+
+                <!-- Baris 6: Email dan No. Telp -->
+                <div style="display: flex; margin-bottom: 16px;">
+                    <div style="flex: 1; margin-right: 8px;">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email"
+                            style="width: 385px; margin-bottom: 8px; margin-top: 8px;" required><br>
+                    </div>
+                    <div style="flex: 1; margin-left: 8px;">
+                        <label for="phone">No. Telp:</label><br>
+                        <input type="tel" id="phone" name="phone"
+                            style="width: 385px; margin-bottom: 8px; margin-top: 8px;" required><br>
+                    </div>
+                </div>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>>
+    <footer>
+        © Copyright Digilib ITTelkom Surabaya 2023.
+</footer>
+    <script src="/src/public/frontend/mahasiswa/js/dashboard_mahasiswa_profile.js"></script>
+</body>
+
+</html>

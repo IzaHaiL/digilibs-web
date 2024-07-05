@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 1000;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        height: 85px;
+    }
+    
+    .navbar-left {
+        display: flex;
+        align-items: center;
+    }
+    
+    .hamburger-menu {
+        font-size: 24px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    
+    .logo {
+        height: 40px;
+    }
+    
+    .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+    
+    .username {
+        margin-right: 10px;
+    }
+    
+    .profile-photo {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .navbar-profile-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .navbar-profile-dropdown button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    
+    .navbar-profile-name {
+        font-weight: bold;
+        color: #333;
+        margin-right: 5px;
+    }
+    
+    .navbar-dropdown-arrow {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid rgb(110, 110, 110);
+        margin-left: 5px;
+    }
+    
+    .navbar-profile-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        right: 0;
+        padding: 10px;
+    }
+    
+    .navbar-profile-dropdown-content.show {
+        display: block;
+    }
+    
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 999;
+        top: 60px;
+        left: 0;
+        background-color: #d92f2f;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 20px;
+        height: 100%;
+        margin-top: 45px;
+    }
+    
+    .sidebar a {
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        transition: 0.3s;
+    }
+    
+    .sidebar a i {
+        margin-right: 10px;
+    }
+    
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidebar .sidebar-closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    
+    footer {
+        background-color: #AA0000;
+        color: white;
+        display: flex;
+        padding: 10px 0;
+        box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        margin-top: auto;
+        height: 100px;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .navbar {
+            padding: 8px 12px;
+        }
+        .sidebar {
+            width: 250px;
+        }
+        .sidebar a {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .navbar-profile-dropdown {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        .main-content-centered {
+            width: 90%;
+            margin: 10px auto;
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+        }
+    }
+    
+</style>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="hamburger-menu" onclick="openNav()">
+                ☰
+            </div>
+            <img src="https://cdn.discordapp.com/attachments/731292697964576833/1257535244966563913/png-transparent-telkom-university-international-office-telkom-education-foundation-private-university-university-miscellaneous-angle-text-thumbnail.png?ex=66856b36&is=668419b6&hm=3a96912bdf5a28f16944d7dae1af5a1d47757fc568229a8205a0cce4bb6d0c17&" alt="Telkom University Logo" class="logo">
+        </div>
+        <div class="navbar-right">
+            <span class="username">Nama User</span>
+            <img src="https://cdn.discordapp.com/attachments/731292697964576833/1258472748838031493/image.png?ex=66882b94&is=6686da14&hm=de69a0f40a691f880107bd941b8aa1f798bc8fe428a6ca0d0a090bf723516eac&" alt="Profile Photo" class="profile-photo">
+            <div class="navbar-profile-dropdown">
+                <button onclick="toggleProfileDropdown()">
+                    <span class="navbar-profile-name">John Doe</span>
+                    <i class="navbar-dropdown-arrow"></i>
+                </button>
+                <div id="navbar-profile-dropdown" class="navbar-profile-dropdown-content">
+                    <a href="halaman_utama.html">Halaman Utama</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="sidebar-closebtn" onclick="closeNav()">&times;</a>
+        <a href="dashboard_mahasiswa.html"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="dashboard_mahasiswa_profile.html"><i class="fas fa-user"></i> Profile</a>
+        <a href="dashboard_mahasiswa_inputberkas.html"><i class="fas fa-envelope"></i> Input Berkas</a>
+    </div>
+
+    <div id="main-wrapper">
+        <div id="main-content">
+            <h1 class="main-dashboard-title">Dashboard</h1>
+            <div class="main-search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="main-content-centered">
+                <table>
+
+            </div>
+            <div class="main-content-pagination">
+                <button>&lt; Previous</button>
+                <button>Next &gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © Copyright Digilib ITTelkom Surabaya 2023.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

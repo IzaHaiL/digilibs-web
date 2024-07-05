@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh; /* Ensure body takes up at least the full height of viewport */
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5fa; /* Changed background color */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow */
+}
+#main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 80px;
+    margin-right: 80px;
+    flex: 1;
+    margin-top: 60px;
+    margin-bottom: 60px;
+   
+}
+#main-content {
+    transition: margin-left .5s;
+    padding: 17px;
+    width: 1756px;
+    /* width: 100%; */
+    /* max-width: 1000px; */
+    margin-top: 96px;
+    margin-bottom: 96px;
+    /* margin-left: 80px; */
+    /* margin-right: 80px; */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid red;
+    overflow-x: auto;
+    width: 1756px;
+}
+.main-dashboard-title {
+    text-align: left;
+    margin-bottom: 20px;
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+    position: sticky; /* Add sticky positioning */
+
+    color: #d92f2f;
+}
+.main-search-container {
+    margin-bottom: 10px;
+    margin-left: 700px;
+    position: sticky; /* Add sticky positioning */
+    /* border: 2px solid #ddd; 
+    border-radius: 5px;  */
+    padding: 5px; /* Add padding inside the search container */
+    display: flex;
+    
+    justify-content: flex-end;
+}
+
+
+
+.main-search-container input[type=text] {
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    background-color: #dfdede;
+    width: 200px; /* Adjust width as needed */
+    outline: none; /* Remove default outline */
+}
+.main-search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #dddddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+.main-content-pagination {
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 0; /* Align to right */
+    float: right;
+    position: sticky; /* Add sticky positioning */
+    bottom: 0; /* Stick to the bottom */
+    background-color: #f5f5fa; /* Ensure the background color matches */
+    z-index: 1; /* Ensure it stays above table content */
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+.main-content-pagination button {
+    margin: 0 5px;
+    width: 80px; /* Set fixed width */
+    height: 40px; /* Set fixed height */
+    background-color: #0F62FE; /* Change button background color */
+    color: white; /* Change text color */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+}
+
+.main-content-pagination button:hover {
+    background-color: #3F8BFC; /* Change button background color on hover */
+}
+
+.main-content-centered {
+margin: 0 auto; /* Center the content */
+width: 100%;
+overflow-x: auto; /* Add horizontal scroll */
+max-width: 1600px; /* Optional: Set maximum width of centered content */
+}
+@media only screen and (max-width: 768px) {
+    .main-navbar {
+        padding: 8px 12px; /* Mengurangi padding pada navbar untuk ruang yang lebih sempit */
+    }
+    .main-sidebar {
+        width: 250px; /* Lebarkan sidebar pada mode responsif */
+    }
+    .main-sidebar a {
+        padding: 10px; /* Sesuaikan padding untuk ukuran layar yang lebih kecil */
+        font-size: 16px; /* Kurangi ukuran font pada sidebar untuk ruang yang lebih kecil */
+    }
+    .openbtn {
+        padding: 8px 12px; /* Sesuaikan padding pada tombol hamburger */
+    }
+    #main-wrapper {
+        margin-top: 0; /* Atur ulang margin atas pada wrapper utama */
+    }
+    .navbar-profile-dropdown {
+        margin-left: 0; /* Atur ulang margin untuk dropdown profil pada layar kecil */
+        margin-right: 20px; /* Tambahkan margin kanan untuk tetap terpisah dari elemen lain */
+    }
+    .main-search-container {
+        margin-right: 8px; /* Sesuaikan margin kanan untuk search container */
+    }
+    .main-content-pagination {
+        margin-top: 15px; /* Sesuaikan margin atas untuk pagination */
+        text-align: center; /* Pusatkan tautan pagination pada layar kecil */
+    }
+    #main-content {
+        width: 90%; /* Atur lebar konten utama untuk layar kecil */
+        margin: 10px auto; /* Center konten utama */
+        padding: 15px; /* Sesuaikan padding pada konten utama */
+    }
+    table {
+        width: 100%; /* Lebarkan tabel agar sesuai dengan konten utama */
+        /* Hilangkan properti white-space: nowrap; yang menghalangi pembungkusan teks */
+    }
+}
+table {
+    width: 100%;
+    ;
+    border-collapse: collapse;
+    
+}
+th {
+    width: 100%; /* Adjust width as needed */
+    background-color: #f2f4f8; /* Set background color for table headers */
+    white-space: nowrap; /* Prevent text wrapping */
+    padding: 8px 10px; /* Add some padding for better spacing */
+    text-align: left; /* Align text to the left */
+    
+}
+
+td {
+    padding: 8px 10px; /* Add some padding for table data */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    width: 20%; /* Set width for table header */
+    background-color: #f2f4f8; /* Changed table header background color */
+}
