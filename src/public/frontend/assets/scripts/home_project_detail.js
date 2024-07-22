@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Fetch data from finalprojects
     let response = await fetch(
-      `http://localhost:3000/finalprojects/public/detail/${projectId}`
+      `https://api.digilibs.me/finalprojects/public/detail/${projectId}`
     )
     if (response.ok) {
       const result = await response.json()
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
       // If not found, try fetching from researchs
       response = await fetch(
-        `http://localhost:3000/researchs/public/detail/${projectId}`
+        `https://api.digilibs.me/researchs/public/detail/${projectId}`
       )
       if (response.ok) {
         const result = await response.json()
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     const response = await fetch(
-      `http://localhost:3000/finalprojects/public/search?q=${currentProjectTitle}`
+      `https://api.digilibs.me/finalprojects/public/search?q=${currentProjectTitle}`
     )
     if (!response.ok) {
       throw new Error('Failed to fetch projects with similar titles.')
