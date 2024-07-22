@@ -1,9 +1,6 @@
 {
   "name": "digilibs-web",
   "version": "1.0.0",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "start": "nodemon server.js"
   },
