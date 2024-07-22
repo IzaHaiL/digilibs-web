@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "nodemon src/bin/www"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
