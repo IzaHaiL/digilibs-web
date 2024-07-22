@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const tugasAkhirResponse = await fetch(
-      "http://sea-lion-app-l3rns.ondigitalocean.app/finalprojects/public/"
+      "https://api.digilibs.me//finalprojects/public/"
     );
     if (!tugasAkhirResponse.ok) {
       throw new Error("Failed to fetch Tugas Akhir data.");
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     const penelitianResponse = await fetch(
-      "http://localhost:3000/researchs/public"
+      "https://api.digilibs.me//researchs/public"
     );
     if (!penelitianResponse.ok) {
       throw new Error("Failed to fetch Penelitian data.");

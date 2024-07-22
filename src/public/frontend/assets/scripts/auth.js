@@ -37,7 +37,7 @@ async function logout() {
     const jwt = getJwtFromCookies(); // Mendapatkan JWT dari cookie
 
     // Lakukan logout dengan mengirim request ke backend
-    const response = await fetch(`http://localhost:3000/users/signout`, {
+    const response = await fetch(`https://api.digilibs.me/users/signout`, {
       method: "POST", // Menggunakan metode POST untuk logout
       headers: {
         Authorization: `Bearer ${jwt}`,
