@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = 5501;
+const port = 8080;
 
 // Middleware to serve static files from 'public/frontend'
 app.use(express.static(path.join(__dirname, 'src/public/frontend')));
