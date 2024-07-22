@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard LPPM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/assets/style/dashboard_fakultas_daftar_tugas_akhir.css" />
+    <!-- <link rel="stylesheet" href="/assets/style/dashboard_dosen.css" /> -->
+</head>
+
+<style>
+
+</style>
+
+<body>
+    <div id="navbar"></div>
+    <div id="sidebarfakultas"></div>
+    <div id="main-wrapper">
+        <div id="main-content">
+            <h1 class="main-dashboard-title">Status Tugas Akhir</h1>
+
+            <div class="main-content-centered">
+
+                <div class="box">
+                    <img src="/assets/image/hijau.png" alt="Disetujui">
+                    <div class="sub-box">
+                        <p>Disetujui</p>
+                        <p id="approved-count">Jumlah</p>
+                    </div>  
+                </div>
+                <div class="box">       
+                    <img src="/assets/image/oren.png" alt="Menunggu Persetujuan">
+                    <div class="sub-box">
+                        <p>Menunggu Persetujuan</p>
+                        <p id="pending-count">Jumlah</p>
+                    </div>   
+                </div>
+                <div class="box">                
+                    <img src="/assets/image/merah.png" alt="Ditolak">
+                    <div class="sub-box">
+                        <p>Ditolak</p>
+                        <p id="rejected-count">Jumlah</p>
+                    </div>  
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="sub-content">
+            <h1 class="sub-dashboard-title">Daftar Tugas Akhir</h1>
+            <div class="main-search-container">
+                <input
+                  type="text"
+                  id="myInput"
+                  placeholder="Search..."
+                  onkeyup="myFunction()"
+                />
+              </div>
+            <div class="sub-content-centered">
+                <table id="myTable">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>NIM</th>
+                        <th>Penulis</th>
+                        <th>Judul Tugas Akhir</th>
+                        <th>Anggota</th>
+                        <th>Program Studi</th>
+                        <th>Fakultas</th>
+                        <th>Tanggal Upload</th>
+                        <th>Tanggal Approval</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <div class="main-content-pagination">
+                    <button id="prevBtn">&lt; Previous</button>
+                    <input
+                      type="number"
+                      id="pageInput"
+                      style="width: 30px; margin: 0 5px; text-align: center"
+                      placeholder="Page"
+                    />
+                    <button id="nextBtn">Next &gt;</button>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/scripts/components.js"></script>
+    <script src="/assets/scripts/dashboard_fakultas_daftar_tugas_akhir.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/assets/scripts/auth.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGILIBS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/assets/style/home_search_list.css" />
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="sidebar"></div>
+    <div id="main-wrapper">
+        <div id="main-content">
+            <h1 class="main-content-title" id="mainContentTitle">Rancang Bangun Sistem Informasi Manajemen Kelurahan
+                Berbasis Android</h1>
+            <h5 class="main-content-title-results" id="mainContentTitleResults">Result: </h5>
+            <div class=" main-content-result" id="main-content-result">
+                <div id="projectContainer" class="main-content-result-header">
+
+                </div>
+            </div>
+            <div class="main-content-pagination">
+                <button id="prevBtn">&lt; Previous</button>
+                <input type="number" id="pageInput" style="width: 30px; margin: 0 5px; text-align: center;"
+                    placeholder="Page">
+                <button id="nextBtn">Next &gt;</button>
+            </div>
+        </div>
+        <div id="side-content">
+            <h1 class="side-title">Pencarian</h1>
+            <form id="searchForm">
+                <div class="side-search-container">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <button type="submit"><i></i>Search</button>
+                </div>
+            </form>
+            <div class="side-content-centered">
+                <a href="" style="color: red;">Pencarian Lanjutan</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/scripts/home_search_list.js"></script>
+    <script src="/assets/scripts/components.js"></script>
+    <script src="/assets/scripts/auth.js"></script>
+</body>
+</html>

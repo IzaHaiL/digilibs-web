@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard LPPM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/assets/style/dashboard_fakultas.css" />
+</head>
+<style>
+  #myChart {
+    width: 100%;
+    height: 400px;
+  }
+</style>
+<body>
+  <div id="navbar"></div>
+  <div id="sidebarfakultas"></div>
+  <div id="main-wrapper">
+    <div id="main-content">
+      <div class="main-content-centered"> 
+        <h1 class="main-dashboard-title">Total Data Tahun <span id="selectedYear">(Tahun)</span>
+          <div class="main-selection-year">   
+            <select id="yearSelect" class="form-select" aria-label="Select Year">
+              <option selected>Open this select menu</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+            </select> 
+            <button id="searchButton">Cari</button>
+          </div>
+        </h1>
+        <h2 class="main-dashboard-title-sub">Berkas</h2>
+      </div>
+    </div>
+    <div id="sub-content">
+      <h1 class="sub-dashboard-title">Data Penelitian dan Tugas Akhir (<span id="fakultasName"></span>)</h1>
+      <div class="sub-content-centered">
+        <canvas id="myChart" width="900" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+  <script src="/assets/scripts/components.js"></script>
+  <script src="/assets/scripts/dashboard_fakultas.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="/assets/scripts/auth.js"></script>
+</body>
+</html>

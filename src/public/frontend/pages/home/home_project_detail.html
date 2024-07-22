@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGILIBS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/assets/style/home_project_detail.css" />
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="sidebar"></div>
+    <div id="main-wrapper">
+        <div id="main-content">
+            <h1 class="main-content-title" id="judul"></h1>
+            <div class="main-content-centered">
+                <table class="main-content-contered-table">
+                    <tr>
+                        <th>Penulis</th>
+                        <td id="penulis"></td>
+                    </tr>
+                    <tr>
+                        <th>Kontributor</th>
+                        <td id="kontributor"></td>
+                    </tr>
+                    <tr>
+                        <th>Jenis Berkas</th>
+                        <td id="jenis-berkas"></td>
+                    </tr>
+                    <tr>
+                        <th>Fakultas</th>
+                        <td id="fakultas"></td>
+                    </tr>
+                    <tr>
+                        <th>Program Studi</th>
+                        <td id="program-studi"></td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal Deposit</th>
+                        <td id="tanggal-deposit"></td>
+                    </tr>
+                    <tr>
+                        <th>Link Jurnal</th>
+                        <td id="link-jurnal"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="main-content-centered">
+                <h3 style="color: red;">Abstrak</h3>
+                <p style="text-align: justify;" id="abstrak">.</p>
+            </div>
+        </div>
+        <div id="side-content">
+            <h1 class="side-title">Pencarian</h1>
+            <div class="side-search-container">
+                <input type="text" placeholder="Masukan Kata Kunci">
+                <button type="submit"><i></i>Search</button>
+            </div>
+            <div class="side-content-centered">
+                <a href="" style="color: red;">Pencarian Lanjutan</a>
+            </div>
+            <h1 class="side-title">Terkait</h1>
+            <div class="side-content-centered">
+                <ul class="dashboard-list" id="projectlist">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/scripts/home_project_detail.js"></script>
+    <script src="/assets/scripts/components.js"></script>
+    <script src="/assets/scripts/auth.js"></script>
+</body>
+</html>

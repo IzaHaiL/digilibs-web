@@ -1,0 +1,306 @@
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hamburger.open {
+    transform: rotate(90deg); /* Rotasi untuk animasi */
+}
+
+/* Style untuk tombol hamburger menjadi X */
+.hamburger span {
+    display: block;
+    width: 30px;
+    height:2px;
+    margin: 5px auto;
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 85px; /* Sesuaikan tinggi navbar sesuai desain */
+
+}
+
+
+.navbar .utama {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navbar .utama:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.navbar .logout {
+    color: #AA0000;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navbar .logout:hover {
+    background-color: #ddd;
+    color: black;
+}
+.navbar-profile-img {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px; 
+    margin-right: 10px; 
+    vertical-align: middle;
+}
+
+.navbar-profile-name {
+    font-weight: bold;
+    color: #333; 
+    margin-right: 5px;
+}
+
+
+.navbar-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-dropdown button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-dropdown-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgb(110, 110, 110);
+    margin-left: 5px;
+}
+
+.navbar-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 56px; 
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; 
+}
+
+.navbar-dropdown-content.show {
+    display: block;
+}
+
+/* .navbar-dropdown button:hover .navbar-dropdown-arrow {
+    border-top-color: black; 
+}
+
+.navbar-dropdown:hover .navbar-dropdown-content {
+    display: block;
+} */
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    margin-left: 80px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+}
+
+.profile-photo {
+    height: 53px;
+    width: 53px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.navbar-username {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #AA0000;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999; /* Ensure sidebar is below navbar */
+    top: 60px; /* Adjust based on navbar height */
+    left: 0;
+    background-color: #d92f2f; /* Changed sidebar color */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px; /* Adjust padding to suit design */
+    height: 1038px;
+    margin-top: 45px;
+}
+
+.sidebar a {
+    color: white; /* Changed text color to white */
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    transition: 0.3s;
+}
+
+.sidebar a i {
+    margin-right: 10px; /* Added margin between icon and text */
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .sidebar-closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+footer {
+    background-color: #AA0000; /* Changed footer color */
+    color: white;
+    display: flex;
+    padding: 10px 0;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Add shadow */
+    margin-top: auto; /* Push footer to the bottom */
+    height: 100px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    position:absolute;
+}
+
+@media only screen and (max-width: 768px) {
+    .openbtn {
+        padding: 8px 12px; 
+    }
+    .navbar-profile-dropdown {
+        margin-left: 0;
+        margin-right: 20px; 
+    }
+}
+
+
+.navbar-alt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 85px;
+    position: fixed;
+}
+
+.navbar-left-alt {
+    display: flex;
+    align-items: center;
+    margin-left: 80px;
+}
+
+.navbar-right-alt {
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+}
+
+.navbar-button-alt button {
+    border: 2px solid #ddd;
+    padding: 3px 10px;
+
+    font-size: 17px;
+
+    background: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.searchlanjutan {
+    margin-top: 19px;
+}
+.searchlanjutan a{
+    color: #d92f2f;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+.navbarhome {
+    position: fixed;
+ 
+    width: 100%;
+    background-color: none;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 85px;
+    position: absolute
+    ;
+}
+.login{
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: normal;
+    background: #AA0000;
+    border: #AA0000;
+    padding: 15px 15px;
+    border-radius: 5px;
+    
+}
+  
+
+

@@ -1,0 +1,70 @@
+.main-search-container {
+    border-radius: 10px;
+    display: flex;
+    border-bottom: 1px solid #d92f2f;
+    border-top: 1px solid #d92f2f;
+    border-left: 1px solid #d92f2f; 
+    height: auto;
+    justify-content: left;
+    align-items: center;
+}
+.fa-search{
+    font-size: 24px;
+    padding: 30px 26px;
+
+  }
+
+
+/* .main-search-container input[type=text] {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 17px;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: transparent;
+    border-left: 1px solid #d92f2f; 
+    padding-left: 15px;
+} */
+
+.main-search-container button {
+
+    border: 1px solid #ddd;
+    height: 300px;
+    width: 152px;
+    font-size: medium;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #d92f2f;
+    cursor: pointer;
+    border: solid #d92f2f; ;
+    border-top-right-radius: 10px ;
+    border-bottom-right-radius: 10px;
+    box-sizing: border-box; /* Menghitung padding dan border ke dalam dimensi elemen */
+    resize: vertical;
+
+}
+
+.main-search-container textarea {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 17px;
+    height: 300px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #d92f2f;
+    padding: 15px 15px;
+    resize: vertical; /* Allows users to resize the textarea vertically */
+    overflow: auto; /* Ensures scrollbars appear if content exceeds the visible area */
+    box-sizing: border-box; /* Includes padding and border in element's total width and height */
+}
+
+
+.main-content-title {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 10px;
+    padding-bottom: 10px;
+    position: sticky;
+    color: #494949;
+}

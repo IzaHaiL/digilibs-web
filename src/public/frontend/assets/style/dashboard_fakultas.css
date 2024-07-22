@@ -1,0 +1,121 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5fa; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+#main-wrapper {
+    display: flex;
+    margin-left: 80px;
+    margin-right: 80px;
+    flex: 1;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    flex-direction: column;
+    align-items: center;
+}
+#main-content {
+    transition: margin-left .5s;
+    height: auto;
+    margin: 80px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-top: 10px solid #D92F2F;
+    width: 1756px;
+    height: auto;
+}
+.main-dashboard-title {
+    text-align: center;
+    position: sticky;
+    color: #000000;
+}
+
+.main-dashboard-title-sub {
+    text-align: center;
+    color: #d92f2f;
+}
+
+
+.main-content-centered {
+    margin: 0 auto;
+    width: 100%;
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+
+#sub-content {
+    transition: margin-left .5s;
+    height: auto;
+    margin-top: 20px;
+    margin: 80px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-top: 10px solid #D92F2F;
+    overflow-x: auto;
+    width: 1756px;  
+}
+.sub-dashboard-title {
+    text-align: left;
+    /* margin-bottom: 20px; */
+    border-bottom: 2px solid #D92F2F;
+    /* padding-bottom: 10px; */
+    position: sticky;
+    color: #A00;
+    padding: 40px 20px;
+    margin: 40px;
+}
+
+
+.sub-content-centered {
+    margin: 0 auto;
+    /* width: 100%; */
+    overflow-x: auto;
+    margin: 40px;
+}
+@media only screen and (max-width: 768px) {
+    #main-wrapper {
+        margin-top: 0; 
+    }
+
+    #main-content {
+        width: 90%; 
+        margin: 10px auto; 
+        padding: 15px; 
+    }
+
+    }
+.main-selection-year{
+    display: flex;
+    gap: 10px;
+
+}
+
+.main-selection-year select{
+    width: 99px;
+    padding: 8px 10px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.main-selection-year button{
+    border-radius: 4px;
+    border: 1px solid #000;
+    
+    background: var(--Gray, #BDBDBD);
+
+}

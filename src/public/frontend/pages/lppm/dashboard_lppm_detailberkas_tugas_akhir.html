@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIGILIBS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="/assets/style/dashboard_dosen_detailberkas.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="/assets/style/dashboard_lppm_detailberkas_tugas_akhir.css"
+    />
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <div id="sidebarlppm"></div>
+    <div id="main-wrapper">
+      <div class="dashboard-2">
+        <h1 class="dashboard-title">Detail Berkas Tugas Akhir</h1>
+        <form
+          id="submitForm"
+          enctype="multipart/form-data"
+          style="margin-top: 8px"
+        >
+          <div class="form-row">
+            <label for="status" class="form-label">Status:</label>
+            <div class="form-input">
+              <select id="status" name="status">
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="catatan" class="form-label">Catatan:</label>
+            <div class="form-input">
+              <textarea id="catatan" name="catatan" rows="4"></textarea>
+            </div>
+          </div>
+          <!-- Baris 1: Penulis -->
+          <div class="form-row">
+            <label for="penulis" class="form-label">Penulis:</label>
+            <div class="form-input">
+              <input
+                type="text"
+                id="penulis"
+                name="penulis"
+                value="-"
+                disabled
+              />
+            </div>
+          </div>
+          <!-- Baris 2: nim -->
+          <div class="form-row">
+            <label for="nim" class="form-label">NIM:</label>
+            <div class="form-input">
+              <input type="text" id="nim" name="nim" value="-" disabled />
+            </div>
+          </div>
+          <!-- Baris 3: Nama Kontributor / Anggota -->
+          <div class="form-row">
+            <label for="namaKontributor" class="form-label"
+              >Nama Kontributor / Anggota:</label
+            >
+            <div class="autocomplete form-input">
+              <input
+                type="text"
+                id="namaKontributor"
+                name="namaKontributor"
+                placeholder="Pilih atau ketik nama kontributor / anggota..."
+                autocomplete="off"
+                disabled
+              />
+              <div class="autocomplete-items" id="kontributorDropdown"></div>
+            </div>
+          </div>
+          <!-- Baris 4: Judul Penelitian -->
+          <div class="form-row">
+            <label for="judulPenelitian" class="form-label"
+              >Judul Tugas Akhir:</label
+            >
+            <div class="form-input">
+              <input
+                type="text"
+                id="judulPenelitian"
+                name="judulPenelitian"
+                placeholder="Masukan Judul Penelitian anda."
+                required
+                disabled
+              />
+            </div>
+          </div>
+          <!-- Baris5 Judul Penelitian -->
+          <div class="form-row">
+            <label for="judulPenelitianEng" class="form-label"
+              >Judul Tugas Akhir (Inggris):</label
+            >
+            <div class="form-input">
+              <input
+                type="text"
+                id="judulPenelitianEng"
+                name="judulPenelitianEng"
+                placeholder="Masukan Judul Bahasa Tugas Akhir anda."
+                required
+                disabled
+              />
+            </div>
+          </div>
+          <!-- Baris 6: Abstrak -->
+          <div class="form-row">
+            <label for="abstrak" class="form-label">Abstrak:</label>
+            <div class="form-input">
+              <textarea
+                id="abstrak"
+                name="abstrak"
+                placeholder="Masukan Abstact Anda."
+                rows="4"
+                required
+                disabled
+              ></textarea>
+            </div>
+          </div>
+          <!-- Baris 6: Abstrak -->
+          <div class="form-row">
+            <label for="abstrakEng" class="form-label"
+              >Abstrak (Inggris):</label
+            >
+            <div class="form-input">
+              <textarea
+                id="abstrakEng"
+                name="abstrakEng"
+                rows="4"
+                placeholder="Masukan Abstact Bahasa Inggris Anda."
+                required
+                disabled
+              ></textarea>
+            </div>
+          </div>
+          <!-- Baris 8: URL Jurnal -->
+          <div class="form-row">
+            <label for="urlJurnal" class="form-label">URL Jurnal:</label>
+            <div class="form-input">
+              <input
+                type="url"
+                id="urlJurnal"
+                name="urlJurnal"
+                placeholder="Link Publikasi Anda( DOI , DLL)"
+                required
+                disabled
+              />
+            </div>
+          </div>
+          <!-- Baris 9: Berkas -->
+          <div class="form-row">
+            <label for="berkas" class="form-label">Unggah Berkas:</label>
+            <div class="form-button">
+              <input
+                type="file"
+                id="berkas"
+                name="berkas"
+                accept=".pdf,.doc,.docx,.zip,.rar"
+                multiple
+                required
+                disabled
+              />
+              <div id="file-list"></div>
+            </div>
+          </div>
+
+          <div class="form-row submit-btn">
+            <div class="form-label"></div>
+            <div class="form-input">
+              <input type="submit" value="Kembali" name="cancelBtn" />
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                style="
+                  background-color: #a00;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  margin-top: 20px;
+                  margin-left: 10px;
+                  padding: 10px 25px;
+                  color: white;
+                  border: none;
+                  font-size: 16px;
+                  font-weight: bold;  
+                "
+              >
+                Verifikasi
+              </button>
+  
+              <!-- Modal -->
+              <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+          >
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Update</h5>
+                          <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                          ></button>
+                      </div>
+                      <div class="modal-body">
+                          <form id="modalForm">
+                              <div class="mb-3">
+                                  <label for="modalStatus" class="form-label">Status:</label>
+                                  <input
+                                      type="text"
+                                      class="form-control"
+                                      id="modalStatus"
+                                      readonly
+                                  />
+                              </div>
+                              <div class="mb-3">
+                                  <label for="modalCatatan" class="form-label">Catatan:</label>
+                                  <textarea
+                                      class="form-control"
+                                      id="modalCatatan"
+                                      rows="4"
+                                      readonly
+                                  ></textarea>
+                              </div>
+                              <div class="form-check">
+                                  <input
+                                      class="form-check-input"
+                                      type="checkbox"
+                                      id="confirmCheckbox"
+                                  />
+                                  <label class="form-check-label" for="confirmCheckbox">
+                                      Saya telah memeriksa dan memastikan data yang diinput sudah benar.
+                                  </label>
+                              </div>
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                          <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                          >
+                              Tutup
+                          </button>
+                          <button
+                              type="button"
+                              class="btn btn-primary"
+                              id="confirmButton"
+                              disabled
+                          >
+                              Konfirmasi
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="submitSuccessMessage" style="display: none" class="submit-success">
+      Data berhasil disubmit!
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/scripts/dashboard_lppm_detailberkas_tugas_akhir.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/assets/scripts/components.js"></script>
+    <script src="/assets/scripts/auth.js"></script>
+    <script>
+     
+    </script>
+  </body>
+</html>

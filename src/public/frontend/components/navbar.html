@@ -1,0 +1,35 @@
+
+<link rel="stylesheet" href="/assets/style/navbarsidebar.css" />
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#" id="hamburger" class="hamburger" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+            <a href="/">
+                <img class="navbar-profile-img" src="/assets/image/logoitts.svg" alt="Profile Picture">
+            </a>
+        </div>
+        <div class="navbar-right">
+            <span class="navbar-username">Hallo, Nama User</span>
+            <img src="https://ypt.or.id/wp-content/uploads/2019/01/Logo-Primer-Vertikal-ITTelkom-Surabaya-White-300x300.png" alt="Profile Photo" class="profile-photo">
+            <div class="navbar-dropdown">
+                <button onclick="toggleProfileDropdown()">
+                    <i class="navbar-dropdown-arrow"></i>
+                </button>
+                <div id="navbar-dropdown-content" class="navbar-dropdown-content">
+                    <a class="utama" href="/">Halaman Utama</a>
+                    <a class="logout" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/scripts/auth.js"></script>
+
+
+
+
+

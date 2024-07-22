@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIGILIBS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/assets/style/dashboard_dosen.css" />
+  </head>
+
+  <body>
+    <div id="navbar"></div>
+    <div id="sidebardosen"></div>
+    <div id="main-wrapper">
+      <div id="main-content">
+        <h1 class="main-dashboard-title">Dashboard</h1>
+        <div class="main-search-container">
+          <input
+            type="text"
+            id="myInput"
+            placeholder="Search..."
+            onkeyup="myFunction()"
+          />
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="main-content-centered">
+          <table id="myTable">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>NIDN</th>
+                <th>Penulis</th>
+                <th>Judul Penelitianr</th>
+                <th>Anggota</th>
+                <th>Program Studi</th>
+                <th>Fakultas</th>
+                <th>Tanggal Upload</th>
+                <th>Tanggal Approval</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="main-content-pagination">
+          <button id="prevBtn">&lt; Previous</button>
+          <input
+            type="number"
+            id="pageInput"
+            style="width: 30px; margin: 0 5px; text-align: center"
+            placeholder="Page"
+          />
+          <button id="nextBtn">Next &gt;</button>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/scripts/dashboard_dosen.js"></script>
+    <script src="/assets/scripts/components.js"></script>
+    <script src="/assets/scripts/auth.js"></script>
+  </body>
+</html>

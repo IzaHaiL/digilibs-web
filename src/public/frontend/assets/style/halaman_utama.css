@@ -1,0 +1,387 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh; /* Ensure body takes up at least the full height of viewport */
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5fa; /* Changed background color */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow */
+    background-image: url("/assets/image/thumbnail.png");
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-size: contain;
+}
+
+/* Additional CSS for other elements if needed */
+
+#main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 80px;
+    margin-right: 80px;
+    flex: 1;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    gap: 20px   ;
+}
+#main-content {
+    transition: margin-left .5s;
+    padding: 17px;
+    height: 221px;
+    /* width: 100%; */
+    /* width: 1274px; */
+    margin-top: 300px;
+    margin-left: 83px; 
+    margin-right: 83px;
+    /* margin-bottom: 96px; */
+    /* margin-left: 80px; */
+    /* margin-right: 80px; */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    /* width: 1756px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#main-content1 {
+    transition: margin-left .5s;
+    padding: 20px; /* Increased padding for better spacing */
+    height: 221px;
+    margin-top: 400px;
+    margin-left: 83px;
+    margin-right: 83px;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    font-size: 50px; /* Increased font size */
+    line-height: 1.5; /* Optional: Adjust line height for better readability */
+}
+.Ctitle {
+    text-align: left;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    font-size: 88.82px; /* Set the font size */
+    color: #ffffff; /* Set the font color to white */
+}
+.Htitle {
+    text-align: left;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    font-size: 33.31px; /* Set the font size */
+    color: #ffffff; /* Set the font color to white */
+}
+.Stitle {
+    text-align: left;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    font-size:44.41px; /* Set the font size */
+    color: #ffffff; /* Set the font color to white */
+}
+
+ .h1 {
+    transition: margin-left .5s;
+    padding: 17px;
+    height: 221px;
+    margin-top: 875px;
+    margin-left: 83px;
+    margin-right: 83px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+.img-fluid {
+    max-width: 100%; /* Ensure image stays within its container */
+    height: auto; /* Maintain aspect ratio */
+}
+.main-dashboard-title {
+    margin-bottom: 20px;
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+    position: sticky; /* Add sticky positioning */
+
+    color: #d92f2f;
+}
+.main-search-container {
+    border-radius: 10px;
+    display: flex;
+    border-bottom: 1px solid #d92f2f;
+    border-top: 1px solid #d92f2f;
+    border-left: 1px solid #d92f2f; 
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+}
+.fa-search{
+    font-size: 24px;
+    padding: 30px 26px;
+
+  }
+
+
+.main-search-container input[type=text] {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 17px;
+    height: 60px;
+    width: 1414px;
+    background: transparent;
+    border: transparent;
+    border-left: 1px solid #d92f2f; 
+    padding-left: 15px; /* Jarak 2px dari border kiri */
+
+}
+.main-search-container button {
+
+    border: 1px solid #ddd;
+    height: 80px;
+    width: 152px;
+    font-size: medium;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #d92f2f;
+    cursor: pointer;
+    border: solid #d92f2f; ;
+    border-top-right-radius: 10px ;
+    border-bottom-right-radius: 10px;
+    box-sizing: border-box; /* Menghitung padding dan border ke dalam dimensi elemen */
+
+}
+.main-content-pagination {
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 0; /* Align to right */
+    float: right;
+    position: sticky; /* Add sticky positioning */
+    bottom: 0; /* Stick to the bottom */
+    
+    background-color: #f5f5fa; /* Ensure the background color matches */
+    z-index: 1; /* Ensure it stays above table content */
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+.main-content-pagination button {
+    margin: 0 5px;
+    width: 80px; /* Set fixed width */
+    height: 40px; /* Set fixed height */
+    background-color: #0F62FE; /* Change button background color */
+    color: white; /* Change text color */
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+}
+
+.main-content-pagination button:hover {
+    background-color: #3F8BFC; /* Change button background color on hover */
+}
+
+.main-content-centered {
+margin: 0 auto; /* Center the content */
+width: 100%;
+overflow-x: auto; /* Add horizontal scroll */
+max-width: 1600px; /* Optional: Set maximum width of centered content */
+}
+@media only screen and (max-width: 768px) {
+    .main-navbar {
+        padding: 8px 12px; /* Adjust padding on navbar */
+    }
+    .main-sidebar {
+        width: 250px; /* Wider sidebar on responsive mode */
+    }
+    .main-sidebar a {
+        padding: 10px; /* Adjust padding for smaller screens */
+        font-size: 16px; /* Reduce font size for sidebar */
+    }
+    .openbtn {
+        padding: 8px 12px; /* Adjust padding on hamburger button */
+    }
+    #main-wrapper {
+        margin-top: 0; /* Reset top margin on main wrapper */
+    }
+    .navbar-profile-dropdown {
+        margin: 0 20px 0 0; /* Adjust margins for profile dropdown */
+    }
+    .main-search-container {
+        margin-right: 8px; /* Adjust margin right for search container */
+    }
+    .main-content-pagination {
+        margin-top: 15px; /* Adjust margin top for pagination */
+        text-align: center; /* Center pagination links */
+    }
+    #main-content {
+        width: 90%; /* Set width for main content */
+        margin: 10px auto; /* Center main content */
+        padding: 15px; /* Adjust padding for main content */
+        box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+
+    }
+    table {
+        width: 100%; /* Ensure table fits within main content */
+    }
+}
+
+
+/* General Container Style */
+.container {
+    margin-top: 1px;
+    max-width: 1000px;
+    padding: 48px 40px;
+    background-color: #ffffff;
+    border: 1px solid #d92f2f;
+    border-top: 10px solid #d92f2f;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    margin-bottom: 95px;
+}
+
+.tugas-akhir .header {
+    text-align: left;
+    font-size: medium;
+    border-bottom: 2px solid #d92f2f;
+    margin-bottom: 18px;
+    padding: 1px;
+}
+
+.tugas-akhir h1 {
+
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.tugas-akhir h2 {
+
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+
+.tugas-akhir .title {
+    text-align: left;
+    color: #2F80ED;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-size: 24px
+}
+
+
+.tugas-akhir .content {
+    display: flex;
+    white-space: nowrap;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.tugas-akhir .content div {
+    margin-right: 20px;
+    text-align: left;
+    padding-right: 1px;
+}
+
+
+
+/* Penelitian Specific Styles */
+.penelitian .header {
+    text-align: left;
+    font-size: medium;
+    border-bottom: 2px solid #d92f2f;
+    margin-bottom: 18px;
+    padding: 1px;
+}
+
+.penelitian h1 {
+
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.penelitian h2 {
+
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+.penelitian .title {
+    text-align: left;
+    color: #2F80ED;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-size: 24px
+}
+
+
+.penelitian .content {
+    display: flex;
+    white-space: nowrap;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.penelitian .content div {
+    margin-right: 20px;
+    text-align: left;
+    padding-right: 1px;
+}
+
+.table-content {
+    display: flex;
+    align-items: stretch;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #aaa;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+/* Additional Styling for Both Sections */
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+        align-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        margin-top: 0;
+        width: 90%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .content div {
+        margin-bottom: 10px;
+    }
+}
+
+
+
