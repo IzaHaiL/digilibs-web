@@ -51,7 +51,10 @@ async function logout() {
       console.log("Logout success");
 
       // Hapus cookie JWT setelah logout
-      deleteJwtCookie();
+      await deleteJwtCookie();
+
+      // Tunggu 2 detik sebelum redirect
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
       // Redirect ke halaman login atau halaman lainnya
       window.location.href = '/login'; // Ganti dengan halaman login kamu
@@ -64,11 +67,15 @@ async function logout() {
   }
 }
 
-function deleteJwtCookie() {
+async function deleteJwtCookie() {
   // Set cookie expiration date to past
   document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
   // Optionally, add a log to confirm the deletion
   console.log("JWT cookie deleted");
   // Optionally, log all cookies to check if the jwt cookie is still present
   console.log("All cookies after deletion: ", document.cookie);
+  
+  // Tunggu 2 detik untuk memastikan cookie benar-benar terhapus
+  await new Promise(resolve => setTimeout(resolve, 2000));
 }
+
