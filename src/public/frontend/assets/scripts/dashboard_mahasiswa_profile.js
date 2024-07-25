@@ -1,3 +1,6 @@
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+
+
 document.addEventListener('DOMContentLoaded', async () => {
   const jwt = getJwtFromCookies() // Mendapatkan JWT dari cookies
 
@@ -64,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       try {
         const response = await fetch(
-          `http://localhost:3000/users/update/mahasiswa/${userData.data.user_id}`,
+          `${BASE_URL}/users/update/mahasiswa/${userData.data.user_id}`, // Gunakan BASE_URL
           {
             method: 'PUT',
             headers: {
@@ -92,12 +95,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Fungsi untuk mengambil data dari API
 async function fetchData (jwt) {
   try {
-    const response = await fetch('http://localhost:3000/users/detail/', {
+    const response = await fetch(`${BASE_URL}/users/detail/`, { // Gunakan BASE_URL
       headers: {
         Authorization: `Bearer ${jwt}`
       }
     })
     const data = await response.json()
+    console.log(data)
     return data
   } catch (error) {
     console.error('Error fetching data:', error)
@@ -128,3 +132,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (error) {
   }
 })
+

@@ -1,25 +1,27 @@
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+
 document.addEventListener('DOMContentLoaded', async () => {
   const jwt = getJwtFromCookies() // Mendapatkan JWT dari cookies
 
   if (!jwt) {
-    window.location.href = 'login.html' // Redirect ke halaman login jika tidak ada JWT
+    
   } else {
     try {
-      const userData = await fetchData(jwt) // Memanggil fungsi untuk mengambil data dari API
-      const dosenData = userData.data.data // Mengakses data dosen di dalam respons
-      const fakultasData = userData.data.fakultas // Mengakses data fakultas di dalam respons
-      const prodiData = userData.data.prodi // Mengakses data prodi di dalam respons
+      const userData = await fetchData(jwt) 
+      const dosenData = userData.data.data 
+      const fakultasData = userData.data.fakultas 
+      const prodiData = userData.data.prodi 
 
       // Mengisi nilai formulir berdasarkan data yang diterima
       document.getElementById('fullname').value = dosenData.nama_dosen
       document.getElementById('nik').value = dosenData.nik
-      document.getElementById('nidn').value = dosenData.nidn
+      document.getElementById('nim').value = dosenData.nidn
       document.getElementById('placeOfBirth').value = dosenData.tempat_lahir
       document.getElementById('dateOfBirth').value = dosenData.tanggal_lahir
       document.getElementById('gender').value =
         dosenData.jenis_kelamin === 'Laki-laki' ? 'male' : 'female'
       document.getElementById('facultySearch').value =
-        fakultasData.nama_fakultas // Mengisi nama fakultas
+        fakultasData.nama_fakultas 
       document.getElementById('studyProgramSearch').value = prodiData.nama_prodi 
       document.getElementById('address').value = dosenData.alamat
       document.getElementById('email').value = userData.data.email 
@@ -32,14 +34,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Event listener untuk form submit
+
   document
     .getElementById('updateForm')
     .addEventListener('submit', async event => {
-      event.preventDefault() // Mencegah form submit default
+      event.preventDefault() //
 
       if (!confirm('Apakah Anda yakin ingin mengupdate data?')) {
-        return // Jika pengguna membatalkan konfirmasi, batalkan pengiriman
+        return 
       }
 
       const updatedData = {
@@ -57,14 +59,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             ? 'Laki-laki'
             : 'Perempuan',
         url_foto: document.getElementById('pp-profile').src,
-        fakultas_id: document.getElementById('facultySearch').dataset.id, // Pastikan id fakultas disimpan di data atribut
-        prodi_id: document.getElementById('studyProgramSearch').dataset.id, // Pastikan id prodi disimpan di data atribut
+        fakultas_id: document.getElementById('facultySearch').dataset.id, 
+        prodi_id: document.getElementById('studyProgramSearch').dataset.id, 
         nomor_hp: document.getElementById('phone').value
       }
 
       try {
         const response = await fetch(
-          `http://localhost:3000/users/update/dosen/${userData.data.user_id}`,
+          `${BASE_URL}/users/update/dosen/${userData.data.user_id}`, // Gunakan BASE_URL
           {
             method: 'PUT',
             headers: {
@@ -92,12 +94,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Fungsi untuk mengambil data dari API
 async function fetchData (jwt) {
   try {
-    const response = await fetch('http://localhost:3000/users/detail/', {
+    const response = await fetch(`${BASE_URL}/users/detail/`, { // Gunakan BASE_URL
       headers: {
         Authorization: `Bearer ${jwt}`
       }
     })
     const data = await response.json()
+    console.log(data)
     return data
   } catch (error) {
     console.error('Error fetching data:', error)
@@ -105,55 +108,7 @@ async function fetchData (jwt) {
   }
 }
 
-var faculties = ['Fakultas 1', 'Fakultas 2', 'Fakultas 3'] // Daftar fakultas
-var studyPrograms = ['Program Studi 1', 'Program Studi 2', 'Program Studi 3'] // Daftar program studi
-
-function autocomplete (input, dropdown, items) {
-  input.addEventListener('input', function (e) {
-    var value = this.value
-    closeAllDropdowns() // Tutup semua dropdown terbuka sebelumnya
-    dropdown.innerHTML = ''
-    items.forEach(function (item) {
-      if (item.toUpperCase().includes(value.toUpperCase())) {
-        var option = document.createElement('div')
-        option.textContent = item
-        option.addEventListener('click', function () {
-          input.value = item
-          closeAllDropdowns() // Tutup dropdown setelah memilih
-        })
-        dropdown.appendChild(option)
-      }
-    })
-    dropdown.classList.add('active') // Tampilkan dropdown
-  })
-
-  input.addEventListener('mouseleave', function () {
-    closeAllDropdowns() // Tutup dropdown jika kursor tidak di dalam dropdown atau input
-  })
-
-  dropdown.addEventListener('mouseleave', function () {
-    closeAllDropdowns() // Tutup dropdown jika kursor tidak di dalam dropdown atau input
-  })
-}
-
-function closeAllDropdowns () {
-  var allDropdowns = document.querySelectorAll('.autocomplete-items')
-  allDropdowns.forEach(function (dropdown) {
-    dropdown.classList.remove('active') // Sembunyikan semua dropdown
-  })
-}
-
-autocomplete(
-  document.getElementById('facultySearch'),
-  document.getElementById('facultyDropdown'),
-  faculties
-)
-autocomplete(
-  document.getElementById('studyProgramSearch'),
-  document.getElementById('studyProgramDropdown'),
-  studyPrograms
-)
-
+// Fungsi untuk mendapatkan JWT dari cookies
 document.addEventListener('DOMContentLoaded', async () => {
   const jwt = getJwtFromCookies() 
   function checkUserRoleFromJwt (jwt) {

@@ -1,10 +1,9 @@
-
+// Define your base URL
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const tugasAkhirResponse = await fetch(
-      "https://api.digilibs.me/finalprojects/public/"
-    );
+    const tugasAkhirResponse = await fetch(`${BASE_URL}/finalprojects/public/`);
     if (!tugasAkhirResponse.ok) {
       throw new Error("Failed to fetch Tugas Akhir data.");
     }
@@ -37,9 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       tugasAkhirContainer.appendChild(contentTable);
     });
 
-    const penelitianResponse = await fetch(
-      "https://api.digilibs.me/researchs/public"
-    );
+    const penelitianResponse = await fetch(`${BASE_URL}/researchs/public`);
     if (!penelitianResponse.ok) {
       throw new Error("Failed to fetch Penelitian data.");
     }
@@ -80,35 +77,38 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.addEventListener("DOMContentLoaded", function () {
   const searchForm = document.getElementById("searchForm");
   const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton"); // tambahkan tombol ini
 
   searchForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const searchTerm = searchInput.value.trim();
     if (searchTerm) {
-      const searchUrl = `/home/search?q=${encodeURIComponent(
-        searchTerm
-      )}`;
+      const searchUrl = `/home/search?q=${encodeURIComponent(searchTerm)}`;
 
       window.location.href = searchUrl;
     }
   });
+
   searchInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       event.preventDefault(); 
       searchForm.dispatchEvent(new Event("submit")); 
     }
   });
+
+  searchButton.addEventListener("click", function () { // tambahkan event listener untuk tombol
+    searchForm.dispatchEvent(new Event("submit"));
+  });
 });
 
-
-
+// Uncomment if needed for modal functionality
 // var myModal = new bootstrap.Modal(document.getElementById("myModal"));
-
 // document.getElementById("btnOpenModal").addEventListener("click", function () {
 //   myModal.show();
 // });
 
+// Uncomment if needed for dropdown menu functionality
 // document.addEventListener("DOMContentLoaded", function () {
 //   var dropdownMenu = document.getElementById("dropdownMenuButton1");
 //   var dropdownItems = document.querySelectorAll(".dropdown-item");

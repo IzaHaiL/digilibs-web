@@ -3,14 +3,10 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scroll */
-    min-height: 100vh; /* Ensure body takes up at least the full height of viewport */
     display: flex;
     flex-direction: column;
-    background-color: #f5f5fa; /* Changed background color */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow */
-    background-image: url("/assets/image/thumbnail.png");
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
-    background-size: contain;
+    background-color: #ffffff; /* Changed background color */
+
 }
 
 /* Additional CSS for other elements if needed */
@@ -30,37 +26,29 @@ body {
     transition: margin-left .5s;
     padding: 17px;
     height: 221px;
-    /* width: 100%; */
-    /* width: 1274px; */
-    margin-top: 300px;
+
+    margin-top: -100px;
     margin-left: 83px; 
     margin-right: 83px;
-    /* margin-bottom: 96px; */
-    /* margin-left: 80px; */
-    /* margin-right: 80px; */
+
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
     overflow-x: auto;
-    /* width: 1756px; */
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
 #main-content1 {
-    transition: margin-left .5s;
-    padding: 20px; /* Increased padding for better spacing */
-    height: 221px;
-    margin-top: 400px;
-    margin-left: 83px;
-    margin-right: 83px;
-    display: flex;
-    align-content: center;
-    justify-content: space-around;
-    font-size: 50px; /* Increased font size */
-    line-height: 1.5; /* Optional: Adjust line height for better readability */
+ background-color: #A00;
+ background-image: url(/assets/image/background.svg);
+ height: 779px;
+ align-items: center;
+ justify-content: center;
+ display: flex;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Add shadow below */
 }
 .Ctitle {
     text-align: left;
@@ -138,10 +126,9 @@ body {
 
 
 .main-search-container input[type=text] {
-    margin-top: 15px;
-    margin-bottom: 15px;
+
     font-size: 17px;
-    height: 60px;
+    height: 100%;
     width: 1414px;
     background: transparent;
     border: transparent;
@@ -157,13 +144,18 @@ body {
     font-size: medium;
     font-weight: bold;
     color: #ffffff;
-    background-color: #d92f2f;
+    background-color: #AA0000;
     cursor: pointer;
-    border: solid #d92f2f; ;
+    border: solid #AA0000; ;
     border-top-right-radius: 10px ;
     border-bottom-right-radius: 10px;
     box-sizing: border-box; /* Menghitung padding dan border ke dalam dimensi elemen */
+    transition: transform 0.1s ease-in-out; /* Tambahkan efek transisi */
 
+}
+
+.main-search-container button:active {
+    transform: scale(0.95); /* Efek klik */
 }
 .main-content-pagination {
     text-align: right;
@@ -201,56 +193,19 @@ width: 100%;
 overflow-x: auto; /* Add horizontal scroll */
 max-width: 1600px; /* Optional: Set maximum width of centered content */
 }
-@media only screen and (max-width: 768px) {
-    .main-navbar {
-        padding: 8px 12px; /* Adjust padding on navbar */
-    }
-    .main-sidebar {
-        width: 250px; /* Wider sidebar on responsive mode */
-    }
-    .main-sidebar a {
-        padding: 10px; /* Adjust padding for smaller screens */
-        font-size: 16px; /* Reduce font size for sidebar */
-    }
-    .openbtn {
-        padding: 8px 12px; /* Adjust padding on hamburger button */
-    }
-    #main-wrapper {
-        margin-top: 0; /* Reset top margin on main wrapper */
-    }
-    .navbar-profile-dropdown {
-        margin: 0 20px 0 0; /* Adjust margins for profile dropdown */
-    }
-    .main-search-container {
-        margin-right: 8px; /* Adjust margin right for search container */
-    }
-    .main-content-pagination {
-        margin-top: 15px; /* Adjust margin top for pagination */
-        text-align: center; /* Center pagination links */
-    }
-    #main-content {
-        width: 90%; /* Set width for main content */
-        margin: 10px auto; /* Center main content */
-        padding: 15px; /* Adjust padding for main content */
-        box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
-
-    }
-    table {
-        width: 100%; /* Ensure table fits within main content */
-    }
-}
 
 
 /* General Container Style */
 .container {
     margin-top: 1px;
-    max-width: 1000px;
+    width: 100%;
+    min-height: 819px;
     padding: 48px 40px;
     background-color: #ffffff;
     border: 1px solid #d92f2f;
     border-top: 10px solid #d92f2f;
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
     overflow-x: auto;
     margin-bottom: 95px;
 }
@@ -284,6 +239,12 @@ max-width: 1600px; /* Optional: Set maximum width of centered content */
     margin-top: 16px;
     margin-bottom: 8px;
     font-size: 24px
+}
+
+.tugas-akhir .title a {
+    text-align: left;
+    color: #2F80ED;
+    text-decoration: none;
 }
 
 
@@ -331,6 +292,12 @@ max-width: 1600px; /* Optional: Set maximum width of centered content */
     margin-top: 16px;
     margin-bottom: 8px;
     font-size: 24px
+    
+}
+.penelitian .title a {
+    text-align: left;
+    color: #2F80ED;
+    text-decoration: none;
 }
 
 
@@ -365,23 +332,137 @@ max-width: 1600px; /* Optional: Set maximum width of centered content */
         align-content: center;
 }
 
-@media only screen and (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    #main-wrapper {
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    #main-content, #main-content1 {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 10px;
+    }
+
+    .Ctitle, .Htitle, .Stitle {
+        font-size: 70px; /* Adjust font size for smaller screens */
+    }
+
+    .main-search-container input[type=text] {
+        width: 100%;
+    }
+
+    .main-search-container button {
+        width: 100px;
+    }
+
     .container {
-        margin-top: 0;
-        width: 90%;
-        margin: 10px auto;
-        padding: 15px;
+        padding: 24px 20px; /* Kurangi padding untuk layar lebih kecil */
     }
-
-    .content {
-        flex-direction: column;
-        align-items: flex-start;
+    .tugas-akhir .header, .penelitian .header {
+        font-size: small; /* Sesuaikan ukuran font */
     }
-
-    .content div {
-        margin-bottom: 10px;
+    .tugas-akhir h1, .penelitian h1 {
+        font-size: 28px; /* Sesuaikan ukuran font */
+    }
+    .tugas-akhir h2, .penelitian h2 {
+        font-size: 20px; /* Sesuaikan ukuran font */
+    }
+    .tugas-akhir .title, .penelitian .title {
+        font-size: 20px; /* Sesuaikan ukuran font */
+    }
+    .tugas-akhir .content, .penelitian .content {
+        flex-direction: column; /* Ubah arah flex menjadi kolom */
+    }
+    .tugas-akhir .content div, .penelitian .content div {
+        margin-right: 0; /* Hapus margin kanan */
+        margin-bottom: 10px; /* Tambahkan margin bawah */
     }
 }
 
+@media (max-width: 768px) {
+    #main-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    #main-content, #main-content1 {
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
+    .Ctitle, .Htitle, .Stitle {
+        font-size: 50px; /* Further adjust font size */
+    }
+
+    .main-search-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main-search-container input[type=text] {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .main-search-container button {
+        width: 100%;
+    }
+
+    .container {
+        padding: 16px 10px; /* Kurangi padding lebih lanjut untuk layar lebih kecil */
+    }
+    .tugas-akhir h1, .penelitian h1 {
+        font-size: 24px; /* Sesuaikan ukuran font */
+    }
+    .tugas-akhir h2, .penelitian h2 {
+        font-size: 18px; /* Sesuaikan ukuran font */
+    }
+    .tugas-akhir .title, .penelitian .title {
+        font-size: 18px; /* Sesuaikan ukuran font */
+    }
+}
+
+@media (max-width: 480px) {
+    .Ctitle, .Htitle, .Stitle {
+        font-size: 30px; /* Further adjust font size */
+    }
+
+    .main-content-pagination button {
+        width: 60px;
+        height: 30px;
+    }
+
+    .container {
+        padding: 8px 5px; /* Kurangi padding lebih lanjut untuk layar sangat kecil */
+    }
+    .tugas-akhir h1, .penelitian h1 {
+        font-size: 20px; /* Sesuaikan ukuran font */
+    }
+    .tugas-akhir h2, .penelitian h2 {
+        font-size: 16px; /* Sesuaikan ukuran font */
+    }
+    .tugas-akhir .title, .penelitian .title {
+        font-size: 16px; /* Sesuaikan ukuran font */
+    }
+
+    .main-search-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main-search-container input[type=text] {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .main-search-container button {
+        width: 100%;
+    }
+}

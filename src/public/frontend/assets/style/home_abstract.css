@@ -7,6 +7,7 @@
     height: auto;
     justify-content: left;
     align-items: center;
+    box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
 }
 .fa-search{
     font-size: 24px;
@@ -27,32 +28,36 @@
     padding-left: 15px;
 } */
 
-.main-search-container button {
+.main-search-container {
+    display: flex;
+    align-items: stretch; /* Ensure children elements stretch to the container's height */
+}
 
+.main-search-container button {
     border: 1px solid #ddd;
-    height: 300px;
     width: 152px;
     font-size: medium;
     font-weight: bold;
     color: #ffffff;
     background-color: #d92f2f;
     cursor: pointer;
-    border: solid #d92f2f; ;
-    border-top-right-radius: 10px ;
+    border: solid #d92f2f;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     box-sizing: border-box; /* Menghitung padding dan border ke dalam dimensi elemen */
     resize: vertical;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-search-container textarea {
-    margin-top: 15px;
-    margin-bottom: 15px;
     font-size: 17px;
-    height: 300px;
+    min-height: 300px;
+    height: 100%;
     width: 100%;
     background: transparent;
-    border: 1px solid #d92f2f;
+    border: none;
     padding: 15px 15px;
     resize: vertical; /* Allows users to resize the textarea vertically */
     overflow: auto; /* Ensures scrollbars appear if content exceeds the visible area */

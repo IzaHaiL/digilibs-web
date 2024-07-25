@@ -12,7 +12,7 @@
 .hamburger span {
     display: block;
     width: 30px;
-    height:2px;
+    height: 2px;
     margin: 5px auto;
     background-color: black;
     transition: all 0.3s ease-in-out;
@@ -43,10 +43,8 @@
     align-items: center;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    height: 85px; /* Sesuaikan tinggi navbar sesuai desain */
-
+    height: 106px; /* Sesuaikan tinggi navbar sesuai desain */
 }
-
 
 .navbar .utama {
     color: black;
@@ -59,7 +57,6 @@
     color: black;
 }
 
-
 .navbar .logout {
     color: #AA0000;
     margin-top: 20px;
@@ -71,9 +68,10 @@
     background-color: #ddd;
     color: black;
 }
+
 .navbar-profile-img {
     width: 100px;
-    height: 100px;
+    height: auto;
     margin-left: 10px; 
     margin-right: 10px; 
     vertical-align: middle;
@@ -84,7 +82,6 @@
     color: #333; 
     margin-right: 5px;
 }
-
 
 .navbar-dropdown {
     position: relative;
@@ -114,24 +111,28 @@
     position: absolute;
     top: 56px; 
     right: 0;
+    padding: 10px;
     background-color: white;
-    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 10px; 
+    transition: all 0.3s ease-in-out; /* Menambahkan efek transisi */
+
 }
+
+.navbar-dropdown-content a {
+    color: black;
+    text-decoration: none;
+}
+
+.navbar-dropdown-content a:hover {
+    background-color: #f0f0f0; /* Efek background ketika di hover */
+}
+
 
 .navbar-dropdown-content.show {
     display: block;
 }
-
-/* .navbar-dropdown button:hover .navbar-dropdown-arrow {
-    border-top-color: black; 
-}
-
-.navbar-dropdown:hover .navbar-dropdown-content {
-    display: block;
-} */
 
 .navbar-left {
     display: flex;
@@ -170,7 +171,6 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 20px; /* Adjust padding to suit design */
-    height: 1038px;
     margin-top: 45px;
 }
 
@@ -211,19 +211,41 @@ footer {
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    position:absolute;
+    position: absolute;
 }
 
 @media only screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .navbar-left, .navbar-right {
+        margin: 0;
+    }
+
+    .navbar-profile-img {
+        width: 50px;
+    }
+
+    .navbar-profile-name {
+        font-size: 14px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+
     .openbtn {
         padding: 8px 12px; 
     }
+
     .navbar-profile-dropdown {
         margin-left: 0;
         margin-right: 20px; 
     }
 }
-
 
 .navbar-alt {
     position: fixed;
@@ -232,13 +254,11 @@ footer {
     width: 100%;
     z-index: 1000;
     display: flex;
-
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 85px;
-    position: fixed;
 }
 
 .navbar-left-alt {
@@ -255,11 +275,8 @@ footer {
 
 .navbar-button-alt button {
     border: 2px solid #ddd;
-    padding: 3px 10px;
-
     font-size: 17px;
-
-    background: #ff0000;
+    background: #AA0000;
     color: white;
     border: none;
     cursor: pointer;
@@ -268,29 +285,34 @@ footer {
 .searchlanjutan {
     margin-top: 19px;
 }
-.searchlanjutan a{
+
+.searchlanjutan a {
     color: #d92f2f;
     font-size: 15px;
     font-weight: 700;
     font-style: normal;
 }
 
-
 .navbarhome {
     position: fixed;
- 
     width: 100%;
     background-color: none;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 20px 20px;
     height: 85px;
-    position: absolute
-    ;
 }
-.login{
+
+.navbarhome.scrolled {
+    background-color: white;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.login {
     color: #ffffff;
     font-size: 15px;
     font-weight: 700;
@@ -299,8 +321,4 @@ footer {
     border: #AA0000;
     padding: 15px 15px;
     border-radius: 5px;
-    
 }
-  
-
-

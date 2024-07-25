@@ -1,154 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DIGILIBS</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/assets/style/dashboard_mahasiswa_inputberkas.css"
-    />
-  </head>
-  <body>
-    <div id="navbar"></div>
-    <div id="sidebar"></div>
 
-    <div id="main-wrapper">
-      <div class="dashboard-2">
-        <h1 class="dashboard-title">Input Berkas Tugas Akhir</h1>
-        <form
-          id="submitForm"
-          enctype="multipart/form-data"
-          style="margin-top: 8px"
-        >
-          <!-- Baris 1: Penulis -->
-          <div class="form-row">
-            <label for="penulis" class="form-label">Penulis:</label>
-            <div class="form-input">
-              <input
-                type="text"
-                id="penulis"
-                name="penulis"
-                value="-"
-                disabled
-              />
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIGILIBS</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/style/dashboard_mahasiswa_inputberkas.css" />
+</head>
+ <style>
+  
+ </style>
+<body>
+  
+  <div id="navbar"></div>
+  <div id="sidebar"></div>
+
+  <div id="main-wrapper">
+    <div class="dashboard-2">
+      <h1 class="dashboard-title">Input Berkas Tugas Akhir</h1>
+      <form class="submitform" id="submitForm" enctype="multipart/form-data" style="margin-top: 8px; gap:5px">
+        <!-- Baris 1: Penulis -->
+        <div class="form-row">
+          <label for="penulis" class="form-label">Penulis:</label>
+          <div class="form-input">
+            <input type="text" id="penulis" name="penulis" value="-" disabled />
           </div>
-          <!-- Baris 2: NIM -->
-          <div class="form-row">
-            <label for="nim" class="form-label">NIM:</label>
-            <div class="form-input">
-              <input type="text" id="nim" name="nim" value="-" disabled />
-            </div>
+        </div>
+        <!-- Baris 2: NIM -->
+        <div class="form-row">
+          <label for="nim" class="form-label">NIM:</label>
+          <div class="form-input">
+            <input type="text" id="nim" name="nim" value="-" disabled />
           </div>
-          <!-- Baris 3: Nama Kontributor / Anggota -->
-          <div class="form-row">
-            <label for="namaKontributor" class="form-label"
-              >Nama Kontributor / Anggota:</label
-            >
-            <div class="autocomplete form-input">
-              <input
-                type="text"
-                id="namaKontributor"
-                name="namaKontributor"
-                placeholder="Pilih atau ketik nama kontributor / anggota..."
-                autocomplete="off"
-              />
-              <div class="autocomplete-items" id="kontributorDropdown"></div>
-            </div>
+        </div>
+        <!-- Baris 3: Nama Kontributor / Anggota -->
+        <div class="form-row">
+          <label for="namaKontributor" class="form-label">Nama Kontributor / Anggota:</label>
+          <div class="form-input" style="display: flex; flex-direction: column;">
+            <select id="namaKontributor" name="namaKontributor" required>
+              <option value="" disabled selected >Pilih nama kontributor / anggota...</option>
+              <!-- Options will be added here dynamically -->
+            </select>
+            <select id="namaKontributor2" name="namaKontributor2" style="display: none;">
+              <option value="" disabled selected>Pilih nama kontributor / anggota...</option> 
+              <!-- Options will be added here dynamically -->
+            </select>
+            <div id="additionalContributors" ></div> <!-- Container for dynamically added selects -->
+
+            <button id="tambahKontributor" class="btn-add">Tambah Kontributor</button>
           </div>
-          <!-- Baris 4: Judul Penelitian -->
-          <div class="form-row">
-            <label for="judulPenelitian" class="form-label">Judul Akhir:</label>
-            <div class="form-input">
-              <input
-                type="text"
-                id="judulPenelitian"
-                name="judulPenelitian"
-                placeholder="Masukan Judul Tugas Akhir anda."
-                required
-              />
-            </div>
+        </div>
+        
+        
+        
+        <!-- Baris 4: Judul Penelitian -->
+        <div class="form-row">
+          <label for="judulPenelitian" class="form-label">Judul Akhir:</label>
+          <div class="form-input">
+            <input type="text" id="judulPenelitian" name="title" placeholder="Masukan Judul Tugas Akhir anda." required />
           </div>
-          <!-- Baris5 Judul Penelitian -->
-          <div class="form-row">
-            <label for="judulPenelitianEng" class="form-label"
-              >Judul Tugas Akhir (Inggris):</label
-            >
-            <div class="form-input">
-              <input
-                type="text"
-                id="judulPenelitianEng"
-                name="judulPenelitianEng"
-                placeholder="Masukan Judul Bahasa Tugas Akhir anda."
-                required
-              />
-            </div>
+        </div>
+        <!-- Baris 5: Judul Penelitian (Inggris) -->
+        <div class="form-row">
+          <label for="judulPenelitianEng" class="form-label">Judul Tugas Akhir (Inggris):</label>
+          <div class="form-input">
+            <input type="text" id="judulPenelitianEng" name="title_eng" placeholder="Masukan Judul Bahasa Tugas Akhir anda." required />
           </div>
-          <!-- Baris 6: Abstrak -->
-          <div class="form-row">
-            <label for="abstrak" class="form-label">Abstrak:</label>
-            <div class="form-input">
-              <textarea
-                id="abstrak"
-                name="abstrak"
-                placeholder="Masukan Abstact Anda."
-                rows="4"
-                required
-              ></textarea>
-            </div>
+        </div>
+        <!-- Baris 6: Abstrak -->
+        <div class="form-row">
+          <label for="abstrak" class="form-label">Abstrak:</label>
+          <div class="form-input">
+            <textarea id="abstrak" name="abstract" placeholder="Masukan Abstact Anda." rows="4" required></textarea>
           </div>
-          <!-- Baris 6: Abstrak -->
-          <div class="form-row">
-            <label for="abstrakEng" class="form-label"
-              >Abstrak (Inggris):</label
-            >
-            <div class="form-input">
-              <textarea
-                id="abstrakEng"
-                name="abstrakEng"
-                rows="4"
-                placeholder="Masukan Abstact Bahasa Inggris Anda."
-                required
-              ></textarea>
-            </div>
+        </div>
+        <!-- Baris 7: Abstrak (Inggris) -->
+        <div class="form-row">
+          <label for="abstrakEng" class="form-label">Abstrak (Inggris):</label>
+          <div class="form-input">
+            <textarea id="abstrakEng" name="abstract_eng" rows="4" placeholder="Masukan Abstact Bahasa Inggris Anda." required></textarea>
           </div>
-          <!-- Baris 8: URL Jurnal -->
-          <div class="form-row">
-            <label for="urlJurnal" class="form-label">URL Jurnal:</label>
-            <div class="form-input">
-              <input
-                type="url"
-                id="urlJurnal"
-                name="urlJurnal"
-                placeholder="Link Publikasi Anda( DOI , DLL)"
-                required
-              />
-            </div>
+        </div>
+                <!-- Baris 11: Kategori -->
+        <div class="form-row">
+          <label for="kategori" class="form-label">Kategori:</label>
+          <div class="form-input">
+            <select id="kategori" name="kategori" >
+              <option value="" disabled selected>Pilih Kategori..</option> 
+
+            </select>
           </div>
-          <div class="form-row submit-btn">
-            <div class="form-label"></div>
-            <div class="form-input">
-              <input type="submit" value="Submit" />
-            </div>
+        </div>
+
+        
+        <!-- Baris 8: URL Jurnal -->
+        <div class="form-row">
+          <label for="urlJurnal" class="form-label">URL Jurnal:</label>
+          <div class="form-input">
+            <input type="url" id="urlJurnal" name="url_finalprojects" placeholder="Link Publikasi Anda (DOI, DLL)" required />
           </div>
-        </form>
-      </div>
+        </div>
+
+
+        
+        <!-- Baris 12: Upload Files -->
+        <div class="form-row">
+          <label for="fileInput" class="form-label">Upload Berkas:</label>
+          <div class="form-input" id="form-files">
+            <input type="file" id="fileInput" name="files" multiple />
+            <div id="fileList" class="file-list"></div>
+          </div>
+        </div>
+        
+        
+        <!-- Submit Button -->
+        <div class="form-row submit-btn">
+          <div class="form-label"></div>
+          <div class="form-input">
+            <input type="submit" value="Cancel" name="cancelBtn" />
+            <input style="background-color: #A00;" type="submit" value="Submit" name="submitBtn" />
+          </div>
+        </div>
+      </form>
     </div>
-    <div id="submitSuccessMessage" style="display: none" class="submit-success">
-      Data berhasil disubmit!
-    </div>
-    <div id="footer"></div>
-    <script src="/assets/scripts/dashboard_mahasiswa_inputberkas.js"></script>
-    <script src="/assets/scripts/components.js"></script>
-    <script src="/assets/scripts/auth.js"></script>
-  </body>
+  </div>
+  
+  <div id="submitSuccessMessage" style="display: none" class="submit-success">
+    Data berhasil disubmit!
+  </div>
+  <div id="footer"></div>
+  <script src="/assets/scripts/dashboard_mahasiswa_inputberkas.js"></script>
+  <script src="/assets/scripts/components.js"></script>
+  <script src="/assets/scripts/auth.js"></script>
+</body>
+
 </html>

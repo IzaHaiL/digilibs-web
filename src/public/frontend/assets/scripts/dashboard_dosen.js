@@ -1,3 +1,5 @@
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+
 function myFunction () {
   var input, filter, table, tr, td, i, txtValue
   input = document.getElementById('myInput')
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchData (jwt, page, pageSize) {
     try {
       const response = await fetch(
-        `http://localhost:3000/researchs/private/user/all?page=${page}&pageSize=${pageSize}`,
+        `${BASE_URL}/researchs/private/user/all?page=${page}&pageSize=${pageSize}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				<td>${item.dosen.nidn}</td>
 				<td>${item.dosen.nama_dosen}</td>
 				<td>${item.title}</td>
-				<td>${item.kontributor}</td>
+    <td>${item.kontributor.map(contributor => `${contributor.nama_dosen}`).join(', ')}</td>
 				<td>${item.prodi.nama_prodi}</td>
 				<td>${item.fakulta.nama_fakultas}</td>
 				<td>${
@@ -162,9 +164,9 @@ async function viewDetails (research_id) {
   window.location.href = `/dashboard/dosen/detailberkas?research_id=${research_id}`
 
   try {
-    // Kirim permintaan ke endpoint dengan research_idd
+    // Kirim permintaan ke endpoint dengan research_id
     const response = await fetch(
-      `http://localhost:3000/researchs/${research_id}`,
+      `${BASE_URL}/${research_id}`,
       {
         method: 'GET',
         headers: {
@@ -174,7 +176,7 @@ async function viewDetails (research_id) {
     )
 
     if (!response.ok) {
-      throw new Error('Failed to fetch  research details.')
+      throw new Error('Failed to fetch research details.')
     }
 
     const researchData = await response.json() // Ambil data JSON dari respons
@@ -195,7 +197,7 @@ async function deleteresearch (researchId) {
 
     const jwt = getJwtFromCookies() // Dapatkan JWT dari cookies
     const response = await fetch(
-      `http://localhost:3000/researchs/private/delete/${researchId}`,
+      `${BASE_URL}/private/delete/${researchId}`,
       {
         method: 'DELETE',
         headers: {
@@ -220,24 +222,3 @@ async function deleteresearch (researchId) {
     window.location.reload()
   }
 }
-
-document.addEventListener('DOMContentLoaded', async () => {
-  const jwt = getJwtFromCookies() 
-  function checkUserRoleFromJwt (jwt) {
-    try {
-      const jwtPayload = JSON.parse(atob(jwt.split('.')[1]))
-      return jwtPayload.role === 'dosen'
-    } catch (error) {
-      return false 
-    }
-  }
-  try {
-    const isValid = checkUserRoleFromJwt(jwt)
-    if (!isValid) { 
-      window.location.href = '/403' 
-      return
-    }
-    buildTable(jwt)
-  } catch (error) {
-  }
-})

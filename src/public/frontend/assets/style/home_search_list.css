@@ -31,7 +31,7 @@ body {
     border: 1px solid #d92f2f;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-top: 10px solid red;
+    border-top: 10px solid #d92f2f;
     overflow-x: auto;
     width: 1100px;
     height: auto;
@@ -64,7 +64,7 @@ body {
     border: 1px solid #d92f2f;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-top: 10px solid red;
+    border-top: 10px solid #d92f2f;
     overflow-x: auto;
     width: 400px;
     height: 219px;
@@ -76,7 +76,7 @@ body {
     border-bottom: 2px solid red;
     padding-bottom: 10px;
     position: sticky;
-    color: #d92f2f;
+    color: #A50000;
 }
 
 .side-search-container {

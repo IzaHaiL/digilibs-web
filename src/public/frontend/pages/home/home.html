@@ -5,131 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIGILIBS</title>
-   <!-- Link CSS -->
+
    <link rel="stylesheet" href="/assets/style/halaman_utama.css">
 
-   <!-- Link Font Awesome CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-   <!-- Link Bootstrap CSS -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-   <!-- Link Google Fonts -->
    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
        rel="stylesheet">
     </head>
 <body>
-    <div id="navbarhome"></div>
-    <div id="navbarlogin"></div>
-    <div id="main-content1">
-        <div>
-            <h1 class="Htitle">SELAMAT DATANG DI
-                <h1 class="Ctitle">DIGITAL LIBRARY</h1>
-                <h1 class="Stitle">ITTELKOM SURABAYA</h1>
-            </h1>
+    <div id="navbarhome" class="navbarhome"></div>
+    <div id="navbarlogin" class="navbarlogin"></div>
+    <div id="main-content1" class="main-content1">
+        
+        <div class="welcome-container">
+            <h1 class="Htitle">SELAMAT DATANG DI</h1>
+            <h1 class="Ctitle">DIGITAL LIBRARY</h1>
+            <h1 class="Stitle">ITTELKOM SURABAYA</h1>
         </div>
     </div>
-    <div id="main-content">
+    <div id="main-content" class="main-content">
         <form id="searchForm" class="searchForm">
             <div class="main-search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" style="font-weight: 500;" id="searchInput" placeholder="Masukan Kata Kunci..">
-                <button type="submit">CARI</button>
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" style="font-weight: 500;" id="searchInput" class="search-input" placeholder="Masukan Kata Kunci..">
+                <button type="submit" class="search-button">CARI</button>
             </div>
              <div class="searchlanjutan">
-                <a href="/home/abstract">Check Similarity</a>
+                <a href="/home/abstract" class="check-similarity-link">Check Similarity</a>
             </div>
-            <!-- <div class="searchlanjutan">
-                <a href="#" id="btnOpenModal">Pencarian Lanjutan</a>
-            </div>
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Pencarian Lanjutan</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="searchForm">
-                                <div class="mb-3">
-                                    <label for="jenis" class="form-label">Jenis</label>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Pilih Jenis
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#" data-value="Tugas Akhir">Tugas
-                                                    Akhir</a></li>
-                                            <li><a class="dropdown-item" href="#" data-value="Penelitian">Penelitian</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="judul" class="form-label">Judul</label>
-                                    <input type="text" class="form-control" id="judul" name="judul">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="penulis" class="form-label">Penulis</label>
-                                    <input type="text" class="form-control" id="penulis" name="penulis">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="penerbit" class="form-label">Penerbit</label>
-                                    <input type="text" class="form-control" id="penerbit" name="penerbit">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="kontributor" class="form-label">Kontributor</label>
-                                    <input type="text" class="form-control" id="kontributor" name="kontributor">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="katakunci" class="form-label">Kata Kunci</label>
-                                    <input type="text" class="form-control" id="katakunci" name="katakunci">
-                                </div>
-                                <div class="mt-5">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="tahunMulai" class="form-label">Tahun Mulai</label>
-                                                <input type="date" class="form-control" id="tahunMulai"
-                                                    name="tahunMulai">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="tahunSelesai" class="form-label">Tahun Selesai</label>
-                                                <input type="date" class="form-control" id="tahunSelesai"
-                                                    name="tahunSelesai">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bersihkan</button>
-                            <button type="button" class="btn btn-primary">Cari</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
         </form>
     </div>
-    <div id="main-wrapper">
+    <div id="main-wrapper" class="main-wrapper">
         <div class="container tugas-akhir" id="tugasAkhirContainer">
             <div class="header tugas-akhir-header">
-                <h1>Tugas Akhir Populer</h1>
+                <h1 class="tugas-akhir-title">Tugas Akhir Populer</h1>
             </div>
         </div>
         <div class="container penelitian" id="penelitianContainer">
             <div class="header penelitian-header">
-                <h1>Penelitian Populer</h1>
+                <h1 class="penelitian-title">Penelitian Populer</h1>
             </div>
         </div>
     </div>
-    <div id="footer"></div>
+    <div id="footer" class="footer"></div>
     <script src="/assets/scripts/halaman_utama.js"></script>
     <script src="/assets/scripts/components.js"></script>
     <script src="/assets/scripts/auth.js"></script>
@@ -144,7 +64,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
+        
 </body>
 
 </html>

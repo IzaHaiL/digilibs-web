@@ -16,46 +16,39 @@ body {
     margin-left: 80px;
     margin-right: 80px;
     flex: 1;
-    margin-top: 60px;
+    margin-top: 130px;
     margin-bottom: 60px;
    
 }
 #main-content {
     transition: margin-left .5s;
-    padding: 17px;
-    width: 1756px;
-    /* width: 100%; */
-    /* max-width: 1000px; */
-    margin-top: 96px;
-    margin-bottom: 96px;
-    /* margin-left: 80px; */
-    /* margin-right: 80px; */
+    /* padding: 17px; */
+    height: auto;
+    /* margin-top: 96px; */
+    /* margin-bottom: 96px; */
+    margin: 80px;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid #D92F2F;;
+    border-top: 10px solid #D92F2F;
     overflow-x: auto;
-    width: 1756px;
+    /* min-width: 1756px; */
 }
 .main-dashboard-title {
     text-align: left;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #D92F2F;;
-    padding-bottom: 10px;
-    position: sticky; /* Add sticky positioning */
-
+    /* margin-bottom: 20px; */
+    border-bottom: 2px solid #D92F2F;
+    /* padding-bottom: 10px; */
+    position: sticky;
     color: #A00;
+    padding: 40px 20px;
+    margin: 40px;
 }
 .main-search-container {
-    margin-bottom: 10px;
-    margin-left: 700px;
-    position: sticky; /* Add sticky positioning */
-    /* border: 2px solid #ddd; 
-    border-radius: 5px;  */
-    padding: 5px; /* Add padding inside the search container */
     display: flex;
-    
+    margin-right: 40px;
+    margin-left: 40px;
     justify-content: flex-end;
 }
 .main-search-container input[type=text] {
@@ -79,16 +72,11 @@ body {
     border: 1px solid;
 }
 .main-content-pagination {
-    text-align: right;
-    margin-top: 10px;
-    margin-right: 0; /* Align to right */
-    float: right;
-    position: sticky; /* Add sticky positioning */
-    bottom: 0; /* Stick to the bottom */
-    background-color: #f5f5fa; /* Ensure the background color matches */
-    z-index: 1; /* Ensure it stays above table content */
     display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    justify-content: flex-end;
 }
 
 .main-content-pagination button {
@@ -109,47 +97,75 @@ body {
 }
 
 .main-content-centered {
-margin: 0 auto; /* Center the content */
-width: 100%;
-overflow-x: auto; /* Add horizontal scroll */
-/* max-width: 1600px; Optional: Set maximum width of centered content */
+    margin: 0 auto;
+    /* width: 100%; */
+    overflow-x: auto;
+    margin: 40px;
 }
 @media only screen and (max-width: 768px) {
-    .main-navbar {
-        padding: 8px 12px; /* Mengurangi padding pada navbar untuk ruang yang lebih sempit */
-    }
-    .main-sidebar {
-        width: 250px; /* Lebarkan sidebar pada mode responsif */
-    }
-    .main-sidebar a {
-        padding: 10px; /* Sesuaikan padding untuk ukuran layar yang lebih kecil */
-        font-size: 16px; /* Kurangi ukuran font pada sidebar untuk ruang yang lebih kecil */
-    }
-    .openbtn {
-        padding: 8px 12px; /* Sesuaikan padding pada tombol hamburger */
-    }
+
     #main-wrapper {
-        margin-top: 0; /* Atur ulang margin atas pada wrapper utama */
-    }
-    .navbar-profile-dropdown {
-        margin-left: 0; /* Atur ulang margin untuk dropdown profil pada layar kecil */
-        margin-right: 20px; /* Tambahkan margin kanan untuk tetap terpisah dari elemen lain */
-    }
-    .main-search-container {
-        margin-right: 8px; /* Sesuaikan margin kanan untuk search container */
-    }
-    .main-content-pagination {
-        margin-top: 15px; /* Sesuaikan margin atas untuk pagination */
-        text-align: center; /* Pusatkan tautan pagination pada layar kecil */
+        margin: 10px; /* Sesuaikan margin untuk layar kecil */
+        flex-direction: column; /* Ubah arah flex untuk layar kecil */
     }
     #main-content {
-        width: 90%; /* Atur lebar konten utama untuk layar kecil */
-        margin: 10px auto; /* Center konten utama */
-        padding: 15px; /* Sesuaikan padding pada konten utama */
+        width: 100%; /* Atur lebar konten utama untuk layar kecil */
+        margin: 20px;
+        padding: 5px; /* Sesuaikan padding pada konten utama */
+        margin-top: 106px;   
+    }
+    .main-dashboard-title {
+        padding: 20px 10px; /* Sesuaikan padding untuk layar kecil */
+        margin: 20px 0; /* Sesuaikan margin untuk layar kecil */
+    }
+    .main-search-container {
+        flex-direction: column; /* Ubah arah flex untuk layar kecil */
+        margin: 10px 0; /* Sesuaikan margin untuk layar kecil */
+        
+    }
+    .main-search-container input[type=text] {
+        margin: 5px 0; /* Sesuaikan margin untuk layar kecil */
+    }
+    .main-search-container button {
+        width: 100%; /* Atur lebar tombol untuk layar kecil */
+        margin: 5px 0; /* Sesuaikan margin untuk layar kecil */
+        display:none
+
+    }
+    .main-content-pagination {
+        margin: 10px 0; /* Sesuaikan margin untuk layar kecil */
+    }
+    .main-content-pagination button {
+        width: 100%; /* Atur lebar tombol untuk layar kecil */
+        margin: 5px 0; /* Sesuaikan margin untuk layar kecil */
+    }
+    .main-content-centered {
+        margin: 10px 0; /* Sesuaikan margin untuk layar kecil */
     }
     table {
         width: 100%; /* Lebarkan tabel agar sesuai dengan konten utama */
-        /* Hilangkan properti white-space: nowrap; yang menghalangi pembungkusan teks */
+        display: block; /* Ubah tabel menjadi block untuk layar kecil */
+        overflow-x: auto; /* Tambahkan scroll horizontal untuk tabel */
+    }
+    th, td {
+        display: block; /* Ubah th dan td menjadi block untuk layar kecil */
+        width: 100%; /* Atur lebar th dan td untuk layar kecil */
+        box-sizing: border-box; /* Pastikan padding dan border dihitung dalam lebar */
+    }
+    th {
+        text-align: left; /* Atur teks ke kiri */
+    }
+    td {
+        text-align: left; /* Atur teks ke kiri */
+    }
+    tr {
+        display: flex; /* Ubah tr menjadi flex untuk layar kecil */
+        flex-direction: row; /* Atur arah flex menjadi baris */
+        justify-content: space-between; /* Sebarkan header dan konten */
+        margin-bottom: 10px; /* Tambahkan margin bawah untuk spasi antar baris */
+    }
+    td button, .delete-btn {
+        margin: 5px; /* Sesuaikan margin untuk layar kecil */
     }
 }
 table {

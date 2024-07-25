@@ -1,179 +1,384 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    min-height: 100vh; /* Ensure body takes up at least the full height of viewport */
-    display: flex;
-    flex-direction: column;
-    background-color: #f5f5fa; /* Changed background color */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow */ 
-}
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        min-height: 100vh; /* Ensure body takes up at least the full height of viewport */
+        display: flex;
+        flex-direction: column;
+        background-color: #f5f5fa; /* Changed background color */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow */ 
+    }
 
-#main-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1; /* Ensure main content takes up remaining vertical space */
-    margin-top: 60px; /* Adjust based on navbar height */
-    padding: 0 20px; /* Add padding for spacing around content */
-    align-items: flex-start
-}
-.dashboard-1 {
-    padding: 48px 40px;
-    width: 389px; /* Fixed width for Dashboard 1 */
-    max-width: 100%; /* Ensure it doesn't exceed the viewport width */
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid #D92F2F;; /* Red top border */
-    overflow-x: auto; /* Add overflow-x for responsive tables */
-    margin-bottom: 17px; /* Margin bottom between dashboards */
-    margin-top: 96px;
-}
-
-.dashboard-2 {
-    padding: 48px 40px;
-    width: 875px; /* Lebar fixed untuk Dashboard 2 */
-    max-width: 1000px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid #D92F2F;; /* Red top border */
-    overflow-x: auto; /* Add overflow-x for responsive tables */
-    margin-left: 16px;
-    margin-bottom: 73px; /* Margin bottom between dashboards */
-
-    margin-top: 96px;
-}
-
-.dashboard-title {
-    text-align: left;
-    margin-top: 20px; /* Adjust top margin */
-    margin-bottom: 20px;
-    border-bottom: 2px solid #D92F2F;; /* Red bottom border */
-    padding-bottom: 10px;
-    color: #A00;
-    
-}
-
-.profile-picture {
-    display: flex;
-    justify-content: center; /* Mengatur agar gambar berada di tengah horizontal */
-    align-items: center; /* Mengatur agar gambar berada di tengah vertical */
-    width: 100%; /* Mengambil lebar maksimum dari parent */
-    margin-bottom: 48px; /* Jarak dari gambar profil ke batas bawah konten */
-}
-
-.profile-picture img {
-    width: 323px; /* Panjang gambar profil */
-    height: 323px; /* Tinggi gambar profil */
-    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
-    object-fit: cover; /* Menyesuaikan gambar agar tidak terdistorsi */
-}
-
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 8px;
-}
-
-input, textarea {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-
-    font-size: 14px;
-    height: 4vh;
-}
-
-
-input, textarea[type="email"] {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    /* border-radius: 5px; */
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-    font-size: 14px;
-    height: 4vh;
-}
-
-input[type="submit"] {
-    background-color: #A00; /* Blue submit button */
-    color: #fff; /* White text */
-    border: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    font-size: 14px;
-}
-
-input[type="submit"]:hover {
-    background-color: #a50101; /* Darker blue on hover */
-}
-.content-centered {
-    margin: 0 auto; /* Center the content */
-    max-width: 1000px; /* Optional: Set maximum width of centered content */
-}
-/* Optional: Add padding to the main content */
-@media only screen and (max-width: 768px) {
     #main-wrapper {
-        margin-top: 0; /* Atur ulang margin atas pada wrapper utama */
+        display: flex;
+        justify-content: center;
+        flex: 1; 
+        padding: 0 20px; 
+        align-items: flex-start;
+        margin: 106px;
+        margin-left: 80px;
+        margin-right: 80px;
     }
-    #main {
-        width: 90%; /* Atur lebar konten utama untuk layar kecil */
-        margin: 10px auto; /* Center konten utama */
-        padding: 15px; /* Sesuaikan padding pada konten utama */
-    }
-    table {
-        width: 100%; /* Lebarkan tabel agar sesuai dengan konten utama */
-        /* Hilangkan properti white-space: nowrap; yang menghalangi pembungkusan teks */
-    }
-}
 
-.autocomplete {
-    position: relative;
-    display: inline-block;
-    width: 385.5px;
-}
-.autocomplete input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    margin-top: 8px;
-}
-.autocomplete .autocomplete-items {
-    position: absolute;
-    border: 1px solid #ddd;
-    border-top: none;
-    z-index: 99;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #f9f9f9;
-    max-height: 150px;
-    overflow-y: auto;
-    display: none; /* Tambahkan display none default */
-}
-.autocomplete .autocomplete-items.active {
-    display: block; /* Tampilkan dropdown saat aktif */
-}
-.autocomplete .autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-}
-.autocomplete .autocomplete-items div:hover {
-    background-color: #e9e9e9;
-}
+    .dashboard-profile, .dashboard-biodata {
+        margin-top: 106px;
+        margin-left: 10px;
+        margin-right: 10px;
+    
+    }
+
+    .dashboard-profile {
+        width: 389px; 
+        max-width: 100%; 
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-top: 10px solid #D92F2F;; 
+
+        
+    }
+
+    .dashboard-biodata {
+        width: 875px;
+        min-height: 100%;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-top: 10px solid #D92F2F;; 
+    }
+
+    .title-profile, .title-biodata {
+        text-align: left;
+        margin: 48px 40px 20px 40px;
+        border-bottom: 2px solid #D92F2F;; /* Red bottom border */
+        padding-bottom: 10px;
+        color: #A00;
+        
+    }
+
+    .profile-picture {
+        display: flex;
+        justify-content: center; /* Mengatur agar gambar berada di tengah horizontal */
+        align-items: center; /* Mengatur agar gambar berada di tengah vertical */
+        width: 100%; /* Mengambil lebar maksimum dari parent */
+        
+    }
+
+    .profile-picture img {
+        width: 323px; /* Panjang gambar profil */
+        height: 323px; /* Tinggi gambar profil */
+        border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+        object-fit: cover; /* Menyesuaikan gambar agar tidak terdistorsi */
+    }
+
+    .form-biodata {
+        margin: 48px 40px 20px 40px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 48px;
+        /* padding: 10px; */
+    }
+
+    .row-fullname{
+        padding-right: 23px;
+    }
+
+    .row-nik-nim-container, .row-faculty-studyProgram-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding-right: 13px;
+
+    }
+    .row-birth-gender-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding-right: 13px;
+
+
+    }
+
+
+    .row-nik-nim, .row-faculty-studyProgram {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding-right: 13px;
+
+    }
+    .row-birth-gender{
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+
+
+
+    }
+
+
+    .row-address, .row-email-phone-container {
+        padding-right: 23px;
+    }
+
+    .row-email-phone {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .column-nik, .column-nim, .column-placeOfBirth, .column-dateOfBirth, .column-gender, .column-faculty, .column-studyProgram {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .column-nik:last-child, .column-nim:last-child, .column-placeOfBirth:last-child, .column-dateOfBirth:last-child, .column-gender:last-child, .column-faculty:last-child, .column-studyProgram:last-child {
+        margin-right: 0;
+    }
+
+
+    .email-container, .phone-container {
+        flex: 1;
+
+    }
+
+    .email-container:last-child, .phone-container:last-child {
+        margin-right: 0;
+    }
+
+    .email-input-container, .phone-input-container {
+        display: flex;
+        align-items: center;
+        /* border: 1px solid #ccc; */
+        border-radius: 5px;
+        /* padding: 8px; */
+        background-color: #fff;
+    }
+
+    .email-input-container img, .phone-input-container img {
+        background-color: #A00;
+        padding: 12px;
+        border-radius: 5px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: 8px;
+        margin-bottom: 10px;
+    
+    }
+    /* .form-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 20px;
+    } */
+
+
+
+
+    .label-fullname, .label-nik, .label-nim, .label-placeOfBirth, .label-dateOfBirth, .label-gender, .label-faculty, .label-studyProgram, .label-address, .label-email, .label-phone {
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: medium
+        
+        
+    }
+
+    .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+        margin-top: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 100%;
+        height: 22px;
+        display: flex;
+        padding: 12px 10px;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+    }
+
+    .textarea-address, .input-email, .input-phone, .input-nik, .input-nim{
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    .select-gender {
+        height: 48px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 100%;
+        padding: 12px 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+    }
+
+
+    .textarea-address {
+        max-width: 448px;
+    }
+
+
+    .input-email {
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #A00; /* Blue submit button */
+        color: #fff; /* White text */
+        border: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #a50101; /* Darker blue on hover */
+    }
+
+    .content-centered {
+        margin: 0 auto; /* Center the content */
+        max-width: 1000px; /* Optional: Set maximum width of centered content */
+    }
+
+    /* Optional: Add padding to the main content */
+    @media only screen and (max-width: 768px) {
+        #main-wrapper {
+            margin-top: 0; /* Atur ulang margin atas pada wrapper utama */
+        }
+        #main {
+            width: 90%; /* Atur lebar konten utama untuk layar kecil */
+            margin: 10px auto; /* Center konten utama */
+            padding: 15px; /* Sesuaikan padding pada konten utama */
+        }
+        table {
+            width: 100%; /* Lebarkan tabel agar sesuai dengan konten utama */
+            /* Hilangkan properti white-space: nowrap; yang menghalangi pembungkusan teks */
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .dashboard-profile, .dashboard-biodata {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .dashboard-profile {
+            margin-bottom: 20px;
+        }
+
+        .dashboard-biodata {
+            margin-top: 0;
+        }
+
+        .title-profile, .title-biodata {
+            margin: 20px;
+        }
+
+        .form-biodata {
+            margin: 20px;
+        }
+
+        .row-nik-nim, .row-faculty-studyProgram, .row-birth-gender {
+            flex-direction: column;
+        }
+
+        .column-nik, .column-nim, .column-placeOfBirth, .column-dateOfBirth, .column-gender, .column-faculty, .column-studyProgram {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .email-container, .phone-container {
+            margin-bottom: 10px;
+        }
+
+        .profile-picture img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 10px;
+            font-size: 12px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        #main-wrapper {
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .dashboard-profile, .dashboard-biodata {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .title-profile, .title-biodata {
+            margin: 10px;
+        }
+
+        .form-biodata {
+            margin: 10px;
+        }
+
+        .row-nik-nim, .row-faculty-studyProgram, .row-birth-gender {
+            flex-direction: column;
+        }
+
+        .column-nik, .column-nim, .column-placeOfBirth, .column-dateOfBirth, .column-gender, .column-faculty, .column-studyProgram {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .email-container, .phone-container {
+            margin-bottom: 10px;
+        }
+
+        .profile-picture img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+            font-size: 10px;
+            padding: 6px;
+        }
+
+        input[type="submit"] {
+            padding: 6px 8px;
+            font-size: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .profile-picture img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+            font-size: 8px;
+            padding: 4px;
+        }
+
+        input[type="submit"] {
+            padding: 4px 6px;
+            font-size: 8px;
+        }
+    }

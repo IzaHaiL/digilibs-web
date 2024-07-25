@@ -1,3 +1,5 @@
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+
 function myFunction () {
   var input, filter, table, tr, td, i, txtValue
   input = document.getElementById('myInput')
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchData (jwt, page, pageSize) {
     try {
       const response = await fetch(
-        `http://localhost:3000/finalprojects/private/user/all?page=${page}&pageSize=${pageSize}`,
+        `${BASE_URL}/finalprojects/private/user/all?page=${page}&pageSize=${pageSize}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				<td>${item.mahasiswa.nim}</td>
 				<td>${item.mahasiswa.nama_mahasiswa}</td>
 				<td>${item.title}</td>
-				<td>${item.kontributor}</td>
+    <td>${item.kontributor.map(contributor => `${contributor.nama_dosen}`).join(', ')}</td>
 				<td>${item.prodi.nama_prodi}</td>
 				<td>${item.fakulta.nama_fakultas}</td>
 				<td>${
@@ -164,7 +166,7 @@ async function viewDetails (project_id) {
   try {
     // Kirim permintaan ke endpoint dengan project_idd
     const response = await fetch(
-      `http://localhost:3000/finalprojects/${project_id}`,
+      `${BASE_URL}/finalprojects/${project_id}`,
       {
         method: 'GET',
         headers: {
@@ -195,7 +197,7 @@ async function deleteProject (projectId) {
 
     const jwt = getJwtFromCookies() // Dapatkan JWT dari cookies
     const response = await fetch(
-      `http://localhost:3000/finalprojects/private/delete/${projectId}`,
+      `${BASE_URL}/finalprojects/private/delete/${projectId}`,
       {
         method: 'DELETE',
         headers: {
