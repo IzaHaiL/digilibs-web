@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const jwt = getJwtFromCookies(); // Fungsi untuk mendapatkan JWT dari cookies
 
@@ -68,8 +66,8 @@ async function logout() {
 }
 
 async function deleteJwtCookie() {
-  // Set cookie expiration date to past
-  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=www.digilibs.me";
+  // Set cookie expiration date to past with additional attributes
+  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=www.digilibs.me; SameSite=None; Secure";
   // Optionally, add a log to confirm the deletion
   console.log("JWT cookie deleted");
   // Optionally, log all cookies to check if the jwt cookie is still present
