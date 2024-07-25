@@ -55,7 +55,7 @@ async function logout() {
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       // Redirect ke halaman login atau halaman lainnya
-      window.location.href = '/login'; // Ganti dengan halaman login kamu
+      window.location.href = '/'; // Ganti dengan halaman login kamu
     } else {
       // Handle logout failure
       console.error("Logout failed");
@@ -68,6 +68,10 @@ async function logout() {
 async function deleteJwtCookie() {
   // Set cookie expiration date to past with additional attributes
   document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=www.digilibs.me; SameSite=None; Secure";
+  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=digilibs.me; SameSite=None; Secure";
+  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure";
+  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
   // Optionally, add a log to confirm the deletion
   console.log("JWT cookie deleted");
   // Optionally, log all cookies to check if the jwt cookie is still present
