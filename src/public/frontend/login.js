@@ -2,25 +2,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const jwt = getJwtFromCookies();
   if (jwt) {
-    window.location.href = '/home'; // Redirect to home if JWT exists
+    redirectBasedOnRole(jwt);
   }
 });
 
 function redirectToLogin() {
   event.preventDefault();
   const BACKEND_BASE_URL = "https://api.digilibs.me";
-  const loginType = document.getElementById("login-type").value;
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
-
-  const redirectMap = {
-    mahasiswa: `/dashboard`,
-    dosen: `/dashboard/dosen`,
-    prodi: `/dashboard/prodi`,
-    fakultas: `/dashboard/fakultas`,
-    lppm: `/dashboard/lppm`,
-    admin: `/dashboard/fakultas.html`,
-  };
 
   const data = {
     username: username,
@@ -36,23 +26,18 @@ function redirectToLogin() {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Login failed");
+        throw new Error("Login gagal");
       }
       return response.json();
     })
     .then((data) => {
       const accessToken = data.accessToken;
       setJwtToCookie(accessToken);
-
-      if (redirectMap.hasOwnProperty(loginType)) {
-        window.location.href = redirectMap[loginType];
-      } else {
-        alert("Invalid login type selected.");
-      }
+      redirectBasedOnRole(accessToken);
     })
     .catch((error) => {
-      console.error("Login error:", error);
-      alert("Login failed. Please try again.");
+      console.error("Kesalahan login:", error);
+      alert("Login gagal. Silakan coba lagi.");
     });
 
   return false;
@@ -76,4 +61,24 @@ function getJwtFromCookies() {
     }
   }
   return null;
+}
+
+function redirectBasedOnRole(jwt) {
+  const payload = JSON.parse(atob(jwt.split('.')[1]));
+  const role = payload.role;
+
+  const redirectMap = {
+    mahasiswa: `/dashboard`,
+    dosen: `/dashboard/dosen`,
+    prodi: `/dashboard/prodi`,
+    fakultas: `/dashboard/fakultas`,
+    lppm: `/dashboard/lppm`,
+    admin: `/dashboard/fakultas.html`,
+  };
+
+  if (redirectMap.hasOwnProperty(role)) {
+    window.location.href = redirectMap[role];
+  } else {
+    alert("Tipe login tidak valid.");
+  }
 }
