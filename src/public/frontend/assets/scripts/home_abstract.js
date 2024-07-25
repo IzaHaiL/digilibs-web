@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateTable(data);
     } catch (error) {
       console.error("Error fetching data:", error);
-      alert("Failed to fetch data. Please try again.");
+      // alert("Failed to fetch data. Please try again.");
     }
   }
 

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const projectId = urlParams.get('id');
 
   if (!projectId) {
-    alert('Project ID not found in URL.');
+    // alert('Project ID not found in URL.');
     return;
   }
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('abstrak').textContent = project.abstract || '-';
   } catch (error) {
     console.error('Error fetching data:', error);
-    alert('Failed to fetch data. Please try again.');
+    // alert('Failed to fetch data. Please try again.');
   }
 });
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   } catch (error) {
     console.error('Error fetching projects:', error);
-    alert('Failed to fetch projects. Please try again.');
+    // alert('Failed to fetch projects. Please try again.');
   }
 });
 

@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         nextBtn.disabled = current_page === total_pages;
       } catch (error) {
         console.error('Error fetching data:', error);
-        alert('Failed to fetch data. Please try again.');
+        // alert('Failed to fetch data. Please try again.');
       }
     }
 
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     pageInput.value = current_page;
   } catch (error) {
     console.error('Error fetching data:', error);
-    alert('Failed to fetch data. Please try again.');
+    // alert('Failed to fetch data. Please try again.');
   }
 });
 

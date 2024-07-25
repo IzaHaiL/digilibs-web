@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function redirectToLogin() {
   event.preventDefault();
-  const BACKEND_BASE_URL = "http://localhost:3000";
+  const BACKEND_BASE_URL = "https://api.digilibs.me";
   const loginType = document.getElementById("login-type").value;
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;

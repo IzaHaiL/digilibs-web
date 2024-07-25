@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   } catch (error) {
     console.error("Error fetching data:", error);
-    alert("Failed to fetch data. Please try again.");
+    // alert("Failed to fetch data. Please try again.");
   }
 });
 
