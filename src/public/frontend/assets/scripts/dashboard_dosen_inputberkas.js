@@ -298,7 +298,7 @@ async function setupFormSubmission(jwt) {
       const responseData = await response.json();
       console.log('Data successfully submitted:', responseData);
       console.log('Files successfully submitted:', filesArray); // Log berhasil untuk files
-      // window.location.href = '/dashboard'; // Redirect ke dashboard
+      window.location.href = '/dashboard/dosen'; // Redirect ke dashboard
 
     } catch (error) {
       // Tangani error

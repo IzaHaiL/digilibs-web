@@ -78,5 +78,5 @@ async function deleteJwtCookie() {
   console.log("All cookies after deletion: ", document.cookie);
   
   // Tunggu 2 detik untuk memastikan cookie benar-benar terhapus
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise(resolve => setTimeout(resolve, 200));
 }

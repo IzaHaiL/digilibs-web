@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
           alert('Data updated successfully!')
           isFormModified = false
+          window.location.href = '/dashboard/dosen';
           window.removeEventListener('beforeunload', handleBeforeUnload)
         } catch (error) {
           console.error('Error updating data:', error)

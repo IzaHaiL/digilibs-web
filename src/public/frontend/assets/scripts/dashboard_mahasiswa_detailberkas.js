@@ -118,7 +118,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
 
           alert('Data updated successfully!')
-          isFormModified = false
+          isFormModified = false 
+          window.location.href = '/dashboard';
           window.removeEventListener('beforeunload', handleBeforeUnload)
         } catch (error) {
           console.error('Error updating data:', error)
@@ -349,6 +350,7 @@ async function fetchData (project_id, jwt) {
     }
     const data = await response.json()
     console.log('Fetched data:', data)
+    window.location.href = '/dashboard'; // Redirect ke dashboard
     return data
   } catch (error) {
     console.error('Error fetching data:', error)
