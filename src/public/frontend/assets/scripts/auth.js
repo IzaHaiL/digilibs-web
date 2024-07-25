@@ -69,7 +69,7 @@ async function logout() {
 
 async function deleteJwtCookie() {
   // Set cookie expiration date to past
-  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=www.digilibs.me";
   // Optionally, add a log to confirm the deletion
   console.log("JWT cookie deleted");
   // Optionally, log all cookies to check if the jwt cookie is still present
@@ -78,4 +78,3 @@ async function deleteJwtCookie() {
   // Tunggu 2 detik untuk memastikan cookie benar-benar terhapus
   await new Promise(resolve => setTimeout(resolve, 2000));
 }
-
