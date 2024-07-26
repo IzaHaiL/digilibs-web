@@ -1,3 +1,5 @@
+const BASE_URL = 'https://api.digilibs.me';
+
 function myFunction () {
   var input, filter, table, tr, td, i, txtValue
   input = document.getElementById('myInput')
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchData (jwt, page, pageSize) {
     try {
       const response = await fetch(
-        `http://localhost:3000/finalprojects/private/fakultas?page=${page}&pageSize=${pageSize}`,
+        `${BASE_URL}/finalprojects/private/fakultas?page=${page}&pageSize=${pageSize}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`
@@ -158,9 +160,9 @@ async function viewDetails (project_id) {
   window.location.href = `/dashboard/fakultas/detail/tugasakhir?project_id=${project_id}`
 
   try {
-    // Kirim permintaan ke endpoint dengan project_idd
+    // Kirim permintaan ke endpoint dengan project_id
     const response = await fetch(
-      `http://localhost:3000/finalprojects/private/fakultas/${project_id}`,
+      `${BASE_URL}/finalprojects/private/fakultas/${project_id}`,
       {
         method: 'GET',
         headers: {
@@ -170,7 +172,7 @@ async function viewDetails (project_id) {
     )
 
     if (!response.ok) {
-      throw new Error('Failed to fetch  project details.')
+      throw new Error('Failed to fetch project details.')
     }
 
     const projectData = await response.json() // Ambil data JSON dari respons
@@ -225,7 +227,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('http://localhost:3000/finalprojects/private/status/count')
+  fetch(`${BASE_URL}/finalprojects/private/status/count`)
     .then(response => response.json())
     .then(data => {
       const statusData = data.data[0]
@@ -261,4 +263,3 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (error) {
   }
 })
-

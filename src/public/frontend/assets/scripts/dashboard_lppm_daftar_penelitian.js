@@ -1,3 +1,6 @@
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+
+
 function myFunction () {
   var input, filter, table, tr, td, i, txtValue
   input = document.getElementById('myInput')
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchData (jwt, page, pageSize) {
     try {
       const response = await fetch(
-        `http://localhost:3000/researchs/private?page=${page}&pageSize=${pageSize}`,
+        `${BASE_URL}/researchs/private?page=${page}&pageSize=${pageSize}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`
@@ -159,7 +162,7 @@ async function viewDetails (research_id) {
 
   try {
     const response = await fetch(
-      `http://localhost:3000/researchs/private/fakultas/${research_id}`,
+      `${BASE_URL}/researchs/private/fakultas/${research_id}`,
       {
         method: 'GET',
         headers: {
@@ -224,7 +227,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('http://localhost:3000/researchs/private/status/count')
+  fetch(`${BASE_URL}/researchs/private/status/count`)
     .then(response => response.json())
     .then(data => {
       const statusData = data.data[0]

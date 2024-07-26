@@ -1,3 +1,5 @@
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+
 document.addEventListener('DOMContentLoaded', async function () {
   const jwt = getJwtFromCookies(); // Mendapatkan JWT dari cookies
 
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Function untuk mengambil data Final Projects
   async function fetchFinalProjects(selectedYear) {
-    const finalProjectsResponse = await fetch(`http://localhost:3000/finalprojects/private/fakultas?page=1&pageSize=99999&year=${selectedYear}`, {
+    const finalProjectsResponse = await fetch(`${BASE_URL}/finalprojects/private/fakultas?page=1&pageSize=99999&year=${selectedYear}`, {
       headers: {
         'Authorization': `Bearer ${jwt}`
       }
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Function untuk mengambil data Research
   async function fetchResearch(selectedYear) {
-    const researchResponse = await fetch(`http://localhost:3000/researchs/private/fakultas?page=1&pageSize=99999&year=${selectedYear}`, {
+    const researchResponse = await fetch(`${BASE_URL}/researchs/private/fakultas?page=1&pageSize=99999&year=${selectedYear}`, {
       headers: {
         'Authorization': `Bearer ${jwt}`
       }
@@ -187,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 async function fetchData(jwt) {
   try {
-    const response = await fetch('http://localhost:3000/users/detail/', {
+    const response = await fetch(`${BASE_URL}/users/detail/`, {
       headers: {
         Authorization: `Bearer ${jwt}`
       }

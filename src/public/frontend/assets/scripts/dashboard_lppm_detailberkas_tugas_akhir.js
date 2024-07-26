@@ -1,3 +1,5 @@
+const BASE_URL = 'https://api.digilibs.me';
+
 document.addEventListener('DOMContentLoaded', async () => {
   const jwt = getJwtFromCookies();
   if (!jwt) {
@@ -7,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     // Fetch user details
-    const userResponse = await fetch('http://localhost:3000/users/detail/', {
+    const userResponse = await fetch(`${BASE_URL}/users/detail/`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${jwt}`
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchData(project_id, jwt) {
       try {
         const response = await fetch(
-          `http://localhost:3000/finalprojects/private/detail/${project_id}`,
+          `${BASE_URL}/finalprojects/private/detail/${project_id}`,
           {
             method: 'GET',
             headers: {
@@ -124,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
               // Submit data to backend
               const submitResponse = await fetch(
-                  `http://localhost:3000/finalprojects/private/update/status/${project_id}`,
+                  `${BASE_URL}/finalprojects/private/update/status/${project_id}`,
                   {
                       method: "PUT",
                       headers: {
@@ -157,4 +159,3 @@ document.addEventListener('DOMContentLoaded', function() {
       event.preventDefault();
   });
 });
-

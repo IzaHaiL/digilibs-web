@@ -35,10 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const itemsPerPage = 5
   let total_pages = 55 // This will be updated based on the data fetched
 
+  const BASE_URL = 'https://api.digilibs.me';
+
   async function fetchData (jwt, page, pageSize) {
     try {
       const response = await fetch(
-        `http://localhost:3000/researchs/private/prodi?page=${page}&pageSize=${pageSize}`,
+        `${BASE_URL}/researchs/private/prodi?page=${page}&pageSize=${pageSize}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`
@@ -160,7 +162,7 @@ async function viewDetails (research_id) {
   try {
     // Kirim permintaan ke endpoint dengan research_idd
     const response = await fetch(
-      `http://localhost:3000/researchs/private/fakultas/${research_id}`,
+      `${BASE_URL}/researchs/private/fakultas/${research_id}`,
       {
         method: 'GET',
         headers: {
@@ -234,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-  fetch('http://localhost:3000/researchs/private/prodi/status/count', {
+  fetch(`${BASE_URL}/researchs/private/prodi/status/count`, {
     headers: {
       'Authorization': `Bearer ${jwt}` // Include the JWT in the Authorization header
     }

@@ -59,7 +59,7 @@ body {
     border-top: 10px solid #d92f2f;
     overflow-x: auto;
     width: 400px;
-    height: 684px;
+    height: fit-content;
 }
 
 #side-content li  a{

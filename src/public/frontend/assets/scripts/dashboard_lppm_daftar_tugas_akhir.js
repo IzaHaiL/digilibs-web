@@ -1,3 +1,6 @@
+const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+
+
 function myFunction () {
   var input, filter, table, tr, td, i, txtValue
   input = document.getElementById('myInput')
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchData (jwt, page, pageSize) {
     try {
       const response = await fetch(
-        `http://localhost:3000/finalprojects/private?page=${page}&pageSize=${pageSize}`,
+        `${BASE_URL}/finalprojects/private?page=${page}&pageSize=${pageSize}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`
@@ -160,7 +163,7 @@ async function viewDetails (project_id) {
   try {
     // Kirim permintaan ke endpoint dengan project_idd
     const response = await fetch(
-      `http://localhost:3000/finalprojects/private/fakultas/${project_id}`,
+      `${BASE_URL}/finalprojects/private/fakultas/${project_id}`,
       {
         method: 'GET',
         headers: {
@@ -225,7 +228,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('http://localhost:3000/finalprojects/private/status/count')
+  fetch(`${BASE_URL}/finalprojects/private/status/count`)
     .then(response => response.json())
     .then(data => {
       const statusData = data.data[0]

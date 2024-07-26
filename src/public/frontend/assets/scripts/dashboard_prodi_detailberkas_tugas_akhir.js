@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  const BASE_URL = 'https://api.digilibs.me';
   const jwt = getJwtFromCookies()
   if (!jwt) {
     window.location.href = '/login'
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const userResponse = await fetch('http://localhost:3000/users/detail/', {
+    const userResponse = await fetch(`${BASE_URL}/users/detail/`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${jwt}`
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchData (project_id, jwt) {
       try {
         const response = await fetch(
-          `http://localhost:3000/finalprojects/private/detail/${project_id}`,
+          `${BASE_URL}/finalprojects/private/detail/${project_id}`,
           {
             method: 'GET',
             headers: {
@@ -145,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const BASE_URL = 'https://api.digilibs.me';
   const jwt = getJwtFromCookies() 
   function checkUserRoleFromJwt (jwt) {
     try {
