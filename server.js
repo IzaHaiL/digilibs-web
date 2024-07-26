@@ -99,7 +99,11 @@ app.get('/dashboard/prodi/daftar/penelitian', (req, res) => {
 });
 app.get('/dashboard/prodi/detail/penelitian', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/public/frontend/pages/prodi/dashboard_prodi_detailberkas_penelitian.html'));
-});
+});    
+
+app.get('/generator', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/commons/generatormahasiswa.html'));
+}); 
 
 app.get('/403', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/public/frontend/pages/commons/403.html'));

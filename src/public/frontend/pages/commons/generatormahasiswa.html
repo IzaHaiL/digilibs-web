@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Mahasiswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+            gap: 10px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header a {
+            color: red;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 50%;
+            height: 30px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .form-group input.fade-in {
+            opacity: 1;
+        }
+        .btn {
+            background-color: #A00;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: darkred;
+        }
+        .fade-in-effect {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-around; gap: 20px; flex-direction: column;">
+        <div class="container">
+            <h2>Generator Akun Mahasiswa</h2>
+            <div class="form-group">
+                <label for="username-mahasiswa">USERNAME :</label>
+                <input type="text" id="username-mahasiswa" name="username-mahasiswa" readonly>
+            </div>
+            <div class="form-group">
+                <label for="password-mahasiswa">PASSWORD :</label>
+                <input type="text" id="password-mahasiswa" name="password-mahasiswa" readonly>
+            </div>
+            <button class="btn" onclick="generateAccountMahasiswa()">GENERATOR MAHASISWA</button>
+        </div>
+        <div class="container">
+            <h2>Generator Akun Dosen</h2>
+            <div class="form-group">
+                <label for="username-dosen">USERNAME :</label>
+                <input type="text" id="username-dosen" name="username-dosen" readonly>
+            </div>
+            <div class="form-group">
+                <label for="password-dosen">PASSWORD :</label>
+                <input type="text" id="password-dosen" name="password-dosen" readonly>
+            </div>
+            <button class="btn" onclick="generateAccountDosen()">GENERATOR DOSEN</button>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <button id="homeButton" class="btn" onclick="goToHome()" style="display: none;">Kembali ke Beranda</button>
+        </div>
+    </div>
+
+    <script>
+        async function generateAccountMahasiswa() {
+            try {
+                const response = await fetch('https://api.digilibs.me/admins/generate-mahasiswa-accounts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                
+                const usernameInput = document.getElementById('username-mahasiswa');
+                const passwordInput = document.getElementById('password-mahasiswa');
+                
+                usernameInput.value = data.data.username;
+                passwordInput.value = data.data.username;
+                
+                usernameInput.classList.add('fade-in-effect');
+                passwordInput.classList.add('fade-in-effect');
+                
+                document.getElementById('homeButton').style.display = 'inline-block';
+                
+                // Remove the class after the animation
+                setTimeout(() => {
+                    usernameInput.classList.remove('fade-in-effect');
+                    passwordInput.classList.remove('fade-in-effect');
+                }, 500);
+                
+            } catch (error) {
+                console.error('Terjadi kesalahan:', error);
+                alert('Gagal menghasilkan akun mahasiswa. Silakan coba lagi.');
+            }
+        }
+
+        async function generateAccountDosen() {
+            try {
+                const response = await fetch('https://api.digilibs.me/admins/generate-dosen-accounts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                
+                const usernameInput = document.getElementById('username-dosen');
+                const passwordInput = document.getElementById('password-dosen');
+                
+                usernameInput.value = data.data.username;
+                passwordInput.value = data.data.username;
+                
+                usernameInput.classList.add('fade-in-effect');
+                passwordInput.classList.add('fade-in-effect');
+                
+                document.getElementById('homeButton').style.display = 'inline-block';
+                
+                // Remove the class after the animation
+                setTimeout(() => {
+                    usernameInput.classList.remove('fade-in-effect');
+                    passwordInput.classList.remove('fade-in-effect');
+                }, 500);
+                
+            } catch (error) {
+                console.error('Terjadi kesalahan:', error);
+                alert('Gagal menghasilkan akun dosen. Silakan coba lagi.');
+            }
+        }
+
+        function goToHome() {
+            window.location.href = '/home';
+        }
+    </script>
+</body>
+</html>
