@@ -1,89 +1,72 @@
-const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+const BASE_URL = 'http://127.0.0.1:8000'; // Change this as needed for different environments
 
-document.addEventListener("DOMContentLoaded", () => {
-  const searchButton = document.getElementById("searchButton");
-  const searchInput = document.getElementById("searchInput");
-  const projectContainer = document.getElementById("projectContainer");
-  const mainContentTitle = document.getElementById("mainContentTitle");
+$(document).ready(function() {
+  const $searchButton = $("#searchButton");
+  const $searchInput = $("#searchInput");
+  const $projectContainer = $("#projectContainer");
+  const $mainContentTitle = $("#mainContentTitle");
 
   async function fetchData(query) {
     try {
-      const response = await fetch(`${BASE_URL}/consine/similarity`, {
+      const requestData = { input_text: query }; // Mengubah inputText menjadi input_text
+      console.log("Data yang dikirim:", requestData);
+
+      const response = await fetch(`${BASE_URL}/check_similarity/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ inputText: query }), // Updated to match the required format
+        body: JSON.stringify(requestData), // Updated to match the required format
       });
 
       if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error response data:", errorData);
         throw new Error("Failed to fetch data.");
       }
 
       const data = await response.json();
 
+      // Log data yang diterima
+      console.log("Data diterima:", data);
+
       // Update main content title with keyword from the API response
-      mainContentTitle.textContent = `Keyword: ${data.keywords}`;
+      $mainContentTitle.text(`Keyword: ${data.keywords}`);
 
       function updateTable(data) {
-        projectContainer.innerHTML = ""; // Clear previous content
+        $projectContainer.empty(); // Clear previous content
 
-        if (data.projectSimilarities.length === 0) {
+        if (!data.similarities || data.similarities.length === 0) {
           // No results found message
-          const noResultsMessage = document.createElement("div");
-          noResultsMessage.textContent = "No results found.";
-          projectContainer.appendChild(noResultsMessage);
+          const noResultsMessage = $("<div>").text("Tidak ada kesamaan.");
+          $projectContainer.append(noResultsMessage);
         } else {
-          data.projectSimilarities.forEach((item, index) => {
-            const contentTable = document.createElement("div");
-            contentTable.className = "table-content";
+          data.similarities.forEach((item, index) => {
+            const $contentTable = $("<div>").addClass("table-content");
 
-            const titleElement = document.createElement("div");
-            titleElement.className = "title project-title";
-            titleElement.style.display = "flex";
-            titleElement.style.flexDirection = "column-reverse";
-            const titleLink = document.createElement("a");
-            titleLink.href = `/home/detail?id=${item.id}`;
-            titleLink.innerHTML = `<h2>${index + 1}. ${
-              item.title.split("\n")[0]
-            }</h2>`;
-            titleElement.appendChild(titleLink);
+            const $titleElement = $("<div>").addClass("title project-title").css({
+              display: "flex",
+              flexDirection: "column-reverse"
+            });
+            const $titleLink = $("<a>").attr("href", `/home/detail?id=${item.dokumen.id}`).html(`<h2>${index + 1}. ${item.dokumen.judul}</h2>`);
+            $titleElement.append($titleLink);
 
-            const abstractElement = document.createElement("div");
-            abstractElement.className = "abstract project-abstract";
-            abstractElement.innerHTML = `<p style="font-size: small; color: black; text-align: justify;">${item.abstract || '-'}</p>`;
-            titleElement.appendChild(abstractElement);
+            const $abstractElement = $("<div>").addClass("abstract project-abstract").html(`<p style="font-size: small; color: black; text-align: justify;">${item.text || '-'}</p>`);
+            $titleElement.append($abstractElement);
 
             // Append anchor to title element
-            titleElement.appendChild(titleLink);
+            $titleElement.append($titleLink);
 
-            const contentElement = document.createElement("div");
-            contentElement.className = "content project-content";
-            contentElement.innerHTML = `
-              <div><i class="fas fa-calendar-alt"></i> ${
-                item.createdAt
-                  ? new Date(item.createdAt).toLocaleDateString("en-US")
-                  : "-"
-              }</div>
-              <div><i class="fas fa-book"></i> ${
-                item.prodi ? item.prodi.nama_prodi : "-"
-              }</div>
-              <div><i class="fas fa-user"></i> ${
-                item.dosen
-                  ? `(${item.dosen.nama_dosen} - ${item.dosen.nidn})`
-                  : "-"
-              }</div>
-              <div><i class="fas fa-eye"></i> ${item.total_views || "-"}</div>
-              <div><i class="fas fa-signal"></i> Similarity: ${
-                item.similarity || "-"
-              }</div>
-            `;
+            const $contentElement = $("<div>").addClass("content project-content").html(`
+              <div><i class="fas fa-calendar-alt"></i> ${item.dokumen.tanggal_upload ? new Date(item.dokumen.tanggal_upload).toLocaleDateString("en-US") : "-"}</div>
+              <div><i class="fas fa-signal"></i> Similarity: ${item.similarity || "-"}</div>
+            `);
 
-            contentTable.appendChild(titleElement);
-            contentTable.appendChild(contentElement);
+            $contentTable.append($titleElement);
+            $contentTable.append($contentElement);
 
             // Append contentTable to projectContainer
-            projectContainer.appendChild(contentTable);
+            $projectContainer.append($contentTable);
           });
         }
       }
@@ -96,13 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  searchButton.addEventListener("click", () => {
-    const query = searchInput.value.trim();
+  $searchButton.on("click", function() {
+    const query = $searchInput.val().trim();
     if (query) {
       fetchData(query);
     }
   });
 
   // Ensure the search input is focused when the page loads
-  searchInput.focus();
+  $searchInput.focus();
 });

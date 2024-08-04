@@ -24,6 +24,29 @@ app.get('/home/abstract', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/public/frontend/pages/home/home_abstract.html'));
 });
 
+app.get('/dashboard/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin.html'));
+});
+
+app.get('/dashboard/admin/daftarusr', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin_daftarusr.html'));
+});
+
+app.get('/dashboard/admin/daftarta', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin_daftarta.html'));
+});
+
+app.get('/dashboard/admin/daftarpe', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin_daftarpe.html'));
+});
+
+app.get('/dashboard/admin/dokumenconfig', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin_dokumenconfig.html'));
+});
+
+app.get('/dashboard/admin/userconfig', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin_userconfig.html'));
+});
 
 
 app.get('/dashboard', (req, res) => {

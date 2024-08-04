@@ -8,10 +8,13 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/style/dashboard_mahasiswa_inputberkas.css" />
+    <link rel="stylesheet" rel="preload"  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" rel="preload"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet"rel="preload"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" rel="preload"  href="/assets/style/dashboard_mahasiswa_inputberkas.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
 </head>
 <body>
   
@@ -26,14 +29,14 @@
         <div class="form-row">
           <label for="catatan" class="form-label">Catatan:</label>
           <div class="form-input">
-            <textarea id="catatan" name="catatan" placeholder="Masukan catatan Anda di sini." rows="4" disabled></textarea>
+            <textarea id="catatan" name="catatan" placeholder="Belum ada Catatan" rows="4" disabled></textarea>
           </div>
         </div>
         <!-- Baris 1: Status -->
         <div class="form-row">
           <label for="status" class="form-label">Status:</label>
           <div class="form-input">
-            <select id="status" name="status">
+            <select id="status" name="status" disabled>
               <option value="Pending">Pending</option>
               <option value="Approved">Approved</option>
               <option value="Rejected">Rejected</option>
@@ -72,105 +75,107 @@
           </div>
         </div>
         
-        <!-- Baris 5: Judul Penelitian -->
-        <div class="form-row">
-          <label for="judulPenelitian" class="form-label">Judul Akhir:</label>
-          <div class="form-input">
-            <input type="text" id="judulPenelitian" name="title" placeholder="Masukan Judul Tugas Akhir anda." required />
-          </div>
+      <!-- Baris 4: Judul Tugas Akhir -->
+      <div class="form-row">
+        <label for="judul" class="form-label">Judul Tugas Akhir:</label>
+        <div class="form-input">
+          <input type="text" id="judul" name="judul" placeholder="Masukan Judul Tugas Akhir anda." required />
         </div>
-        <!-- Baris 6: Judul Penelitian (Inggris) -->
-        <div class="form-row">
-          <label for="judulPenelitianEng" class="form-label">Judul Tugas Akhir (Inggris):</label>
-          <div class="form-input">
-            <input type="text" id="judulPenelitianEng" name="title_eng" placeholder="Masukan Judul Bahasa Tugas Akhir anda." required />
-          </div>
+      </div>
+      <!-- Baris 5: Judul Tugas Akhir (Inggris) -->
+      <div class="form-row">
+        <label for="judul_inggris" class="form-label">Judul Tugas Akhir (Inggris):</label>
+        <div class="form-input">
+          <input type="text" id="judul_inggris" name="judul_inggris" placeholder="Masukan Judul Bahasa Tugas Akhir anda." required />
         </div>
-        <!-- Baris 7: Abstrak -->
-        <div class="form-row">
-          <label for="abstrak" class="form-label">Abstrak:</label>
-          <div class="form-input">
-            <textarea id="abstrak" name="abstract" placeholder="Masukan Abstact Anda." rows="4" required></textarea>
-          </div>
+      </div>
+      <!-- Baris 6: Abstrak -->
+      <div class="form-row">
+        <label for="konten" class="form-label">Abstrak:</label>
+        <div class="form-input">
+          <textarea id="konten" name="konten" placeholder="Masukan Abstact Anda." rows="4" required></textarea>
         </div>
-        <!-- Baris 8: Abstrak (Inggris) -->
-        <div class="form-row">
-          <label for="abstrakEng" class="form-label">Abstrak (Inggris):</label>
-          <div class="form-input">
-            <textarea id="abstrakEng" name="abstract_eng" rows="4" placeholder="Masukan Abstact Bahasa Inggris Anda." required></textarea>
-          </div>
+      </div>
+      <!-- Baris 7: Abstrak (Inggris) -->
+      <div class="form-row">
+        <label for="konten_inggris" class="form-label">Abstrak (Inggris):</label>
+        <div class="form-input">
+          <textarea id="konten_inggris" name="konten_inggris" rows="4" placeholder="Masukan Abstact Bahasa Inggris Anda." required></textarea>
         </div>
-        <!-- Baris 9: Kategori -->
-        <div class="form-row">
-          <label for="kategori" class="form-label">Kategori:</label>
-          <div class="form-input">
-            <select id="kategori" name="kategori" >
-              <option value="" disabled selected>Pilih Kategori..</option> 
-            </select>
-          </div>
+      </div>
+              <!-- Baris 11: Kategori -->
+      <div class="form-row">
+        <label for="kategorifield" class="form-label">Kategori:</label>
+        <div class="form-input">
+          <select id="kategorifield" name="kategorifield" >
+            <option value="" disabled selected>Pilih Kategori..</option> 
+
+          </select>
         </div>
-        <!-- Baris 10: URL Jurnal -->
-        <div class="form-row">
-          <label for="urlJurnal" class="form-label">URL Jurnal:</label>
-          <div class="form-input">
-            <input type="url" id="urlJurnal" name="url_finalprojects" placeholder="Link Publikasi Anda (DOI, DLL)" required />
-          </div>
+      </div>
+
+      
+      <!-- Baris 8: URL Jurnal -->
+      <div class="form-row">
+        <label for="url" class="form-label">URL Jurnal:</label>
+        <div class="form-input">
+          <input type="url" id="url" name="url" placeholder="Link Publikasi Anda (DOI, DLL)" required />
         </div>
-        <!-- Baris 11: Upload Files -->
-        <div class="form-row">
-          <label for="fileInput" class="form-label">Upload Berkas:</label>
-          <div class="form-input" id="form-files">
-            <input type="file" id="fileInput" name="files" multiple />
-            <div id="fileList" class="file-list"></div>
-          </div>
+      </div>
+
+
+      
+      <!-- Baris 12: Upload Files -->
+      <div class="form-row">
+        <label for="fileInput" class="form-label">Upload Berkas:</label>
+        <div class="form-input" id="form-files">
+          <input type="file" id="fileInput" name="files" multiple />
+          <div id="fileList" class="file-list"></div>
         </div>
+      </div>
+      
+
         <!-- Submit Button -->
         <div class="form-row submit-btn">
           <div class="form-label"></div>
           <div class="form-input">
             <input type="submit" value="Cancel" name="cancelBtn" />
-            <input type="submit" value="Submit" name="submitBtn" />
+            <input type="submit" id="updateButton" value="Submit" name="submitBtn" />
           </div>
         </div>
       </form>
     </div>
   </div>
 
-   <!-- Modal HTML -->
-<!-- Modal HTML -->
-<div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+<!-- Modal for PDF preview -->
+<div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="pdfModalLabel">Dokumen Preview</h5>
-        <div class="close-buttons">
-          <button type="button" class="close" aria-label="Close">
-            <i class="bi bi-arrow-clockwise"></i>
-          </button>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        <h5 class="modal-title" id="pdfModalLabel">Preview PDF</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    
       <div class="modal-body">
-        <!-- PDF content will be loaded here -->
+        <canvas id="pdf-canvas"></canvas>
       </div>
- 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="prevPage">Previous</button>
+        <button type="button" class="btn btn-secondary" id="nextPage">Next</button>
+        <button type="button" class="btn btn-secondary" id="zoomOut">Zoom Out</button>
+        <button type="button" class="btn btn-secondary" id="zoomIn">Zoom In</button>
+        <span id="pageInfo">Page 1</span>
+        <button type="button" class="btn btn-refresh"><i class="bi bi-arrow-clockwise"></i></button>
+      </div>
     </div>
   </div>
 </div>
-  <div id="submitSuccessMessage" style="display: none" class="submit-success">
-    Data berhasil disubmit!
-  </div>
   <div id="footer"></div>
-  <script src="/assets/scripts/dashboard_mahasiswa_detailberkas.js"></script>
+  <script src="/assets/scripts/dashboard_mahasiswa_detailberkas22.js"></script>
   <script src="/assets/scripts/components.js"></script>
   <script src="/assets/scripts/auth.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Bootstrap JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- Your custom JavaScript file -->
 </body>
 
 </html>

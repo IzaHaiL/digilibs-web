@@ -145,7 +145,7 @@ body {
     text-align: justify;
 }
 
-.form-input textarea[name="abstract"], textarea[name="abstract_eng"] {
+.form-input textarea[name="konten"], textarea[name="kontent_inggris"] {
     height: 300px;
     font-family: 'Roboto', sans-serif;
     text-align: justify;
@@ -162,7 +162,7 @@ body {
 
 
 .form-input input[type="submit"][name="submitBtn"] {
-    /* background-color: #A00; */
+    background-color: #A00;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
@@ -315,47 +315,47 @@ div.select-container button{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-
-  .modal-body {
+  #pdfModal .modal-body {
     position: relative;
     min-height: 700px; /* Ensure the modal has some height */
   }
 
-  .modal-content {
+  #pdfModal .modal-content {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: fit-content;
   }
 
-  .modal-header {
+  #pdfModal .modal-header {
     border-bottom: 1px solid #A00;
     background-color: #800;
     padding: 15px;
   }
 
-  .modal-title {
+  #pdfModal .modal-title {
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
   }
 
-  .modal-body {
+  #pdfModal .modal-body {
     padding: 20px;
   }
 
-  .modal-footer {
+  #pdfModal .modal-footer {
     border-top: 1px solid #A00;
     padding: 15px;
     text-align: right;
   }
 
-  .modal-footer .btn {
+  #pdfModal .modal-footer .btn {
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 14px;
   }
 
-  .modal-footer .btn-primary {
+  #pdfModal .modal-footer .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
     color: #fff;
@@ -377,6 +377,18 @@ div.select-container button{
     outline: none;
     box-shadow: none;
   }
+
+  #submitBtn {
+    background-color: #A00; /* Default color when enabled */
+    color: white;
+    cursor: pointer;
+  }
+  
+  #submitBtn:disabled {
+    background-color: #ccc; /* Color when disabled */
+    cursor: not-allowed;
+  }
+  
 
   /* ... existing code ... */
 
@@ -450,6 +462,9 @@ div.select-container button{
     }
 }
 
-/* ... existing code ... */
+.changed {
+    background-color: yellow;
+  }
+
 
   

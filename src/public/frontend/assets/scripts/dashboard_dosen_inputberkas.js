@@ -1,314 +1,249 @@
-const BASE_URL = 'https://api.digilibs.me'; // Change this as needed for different environments
+const BASE_URL = 'http://localhost:3000'; // Change this as needed for different environments
 
-document.addEventListener('DOMContentLoaded', async () => {
+
+$(document).ready(function() {
+  // Fetch and populate kontributor options
+  $.get(`${BASE_URL}/users/dosen`, function(response) {
+    response.data.forEach(function(dosen) {
+      console.log(dosen)
+      const fullName = dosen.DosenUsers.UsersDetails.fullName  + ' (' + dosen.nip + ')';
+      $('#namaKontributor').append(new Option(fullName, dosen.user_id));
+      $('.dynamic-select').append(new Option(fullName, dosen.user_id));
+    });
+  });
+  // Fungsi untuk menambahkan select field baru secara dinamis
+  function addSelectField() {
+    const container = $('#additionalContributors');
+
+    // Buat elemen select baru
+    const newSelect = $('<select></select>').addClass('dynamic-select').prop('required', true);
+    
+    // Buat opsi default
+    const defaultOption = $('<option></option>').val('').prop('disabled', true).prop('selected', true).text('Pilih nama kontributor / anggota...');
+    
+    newSelect.append(defaultOption);
+
+    const selectedValues = new Set();
+
+    // Kumpulkan nilai yang dipilih dari semua select
+    $('select').each(function() {
+      const selectedOption = $(this).find('option:selected');
+      if (selectedOption.val()) {
+        selectedValues.add(selectedOption.val());
+      }
+    });
+
+    // Tambahkan opsi ke select baru, kecuali yang sudah dipilih
+    $('#namaKontributor option').each(function() {
+      const value = $(this).val();
+      const text = $(this).text();
+      if (!selectedValues.has(value)) {
+        newSelect.append(new Option(text, value));
+      }
+    });
+
+    // Buat container untuk select dan tombol hapus
+    const selectContainer = $('<div></div>').addClass('select-container').append(newSelect);
+
+    // Buat tombol hapus
+    const deleteButton = $('<button></button>').text('X').addClass('delete-button').on('click', function() {
+      selectContainer.remove();
+    });
+
+    selectContainer.append(deleteButton);
+
+    container.append(selectContainer);
+
+  }
+  // Pasang event listener ke tombol
+  $('#tambahKontributor').on('click', function(event) {
+    event.preventDefault();
+    addSelectField();
+  });
+
+
+
+  // Fetch and populate kategori options
+  $.get(`${BASE_URL}/admin/document-config/kategori`, function(data) {
+    data.forEach(function(kategori) {
+      $('#kategori').append(new Option(kategori.nama_kategori, kategori.id));
+    });
+  });
+
+  $.get(`${BASE_URL}/admin/document-config/indeks`, function(data) {
+    data.forEach(function(indeks) {
+      $('#indeks').append(new Option(indeks.nama_indeks, indeks.id));
+    });
+  });
+  $.get(`${BASE_URL}/admin/document-config/penerbit`, function(data) {
+    data.forEach(function(penerbit) {
+      $('#penerbit').append(new Option(penerbit.nama_penerbit, penerbit.id));
+    });
+  });
+
+  // Populate user data
   const jwt = getJwtFromCookies();
-
-  if (!jwt) {
-    return;
-  }
-
-  try {
-    await populateUserData(jwt);
-  } catch (error) {
-    console.error('Error fetching user details:', error);
-    alert('Failed to fetch user details. Please try again.');
-  }
-
-  setupFormSubmission(jwt);
-  checkUserRoleAndBuildTable(jwt);
-});
-
-async function populateUserData(jwt) {
-  const userData = await fetchData(jwt);
-  const dosenData = userData.data.data;
-
-  document.getElementById('penulis').value = dosenData.nama_dosen;
-  document.getElementById('nidn').value = dosenData.nidn;
-}
-async function populateCategories() {
-  try {
-    // Fetch categories from the API
-    const response = await fetch(`${BASE_URL}/admins`);
-    const result = await response.json();
-
-    if (response.ok) {
-      // Get the select element
-      const selectElement = document.getElementById('kategori');
-
-      // Clear existing options
-      selectElement.innerHTML = '<option value="" disabled selected>Pilih nama Kategori Keahlian</option>';
-
-      // Create and append new options for each category
-      result.data.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category.kategori_id;
-        option.textContent = category.nama_kategori;
-        selectElement.appendChild(option);
-      });
-    } else {
-      console.error('Failed to fetch categories:', result.message);
-    }
-  } catch (error) {
-    console.error('Error fetching categories:', error);
-  }
-}
-// Call the function to populate categories on page load
-document.addEventListener('DOMContentLoaded', populateCategories);
-
-// Function to populate contributor selects from the API
-async function populateContributors() {
-  try {
-    // Retrieve JWT from cookies
-    const jwt = getJwtFromCookies();
-
-    // Check if token exists
-    if (!jwt) {
-      throw new Error('No JWT token found');
-    }
-
-    // Fetch contributors from the API
-    const response = await fetch(`${BASE_URL}/users/AllDosen?page=1&pageSize=10`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${jwt}`,
-        'Content-Type': 'application/json'
-      }
-    });
-
-    console.log('Response Status:', response.status);
-
-    // Check if response is ok
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    console.log('API Response:', result);
-
-    // Check if the response contains the expected data
-    if (result.message === "Success fetch lecturers" && result.data) {
-      // Store the contributors in a variable
-      window.contributors = result.data;
-
-      // Get the select elements
-      const select1 = document.getElementById('namaKontributor');
-      const select2 = document.getElementById('namaKontributor2');
-      
-      console.log('Select Elements:', { select1, select2 });
-
-      // Clear existing options
-      select1.innerHTML = '<option value="" disabled selected>Pilih nama kontributor / anggota...</option>';
-      
-      // Create and append new options for each contributor
-      result.data.forEach(contributor => {
-        // console.log('Adding Contributor:', contributor);
-
-        const option = document.createElement('option');
-        option.value = contributor.dosen_id; // Use correct field
-        option.textContent = contributor.nama_dosen; // Use correct field
-        select1.appendChild(option);
-
-        // Add options to the second select as well
-        const option2 = option.cloneNode(true);
-        select2.appendChild(option2);
-      });
-    } else {
-      console.error('Unexpected response format:', result);
-    }
-  } catch (error) {
-    console.error('Error fetching contributors:', error);
-  }
-}
-
-// Function to add new select fields dynamically
-function addSelectField() {
-  const container = document.getElementById('additionalContributors');
-
-  // Create new select element
-  const newSelect = document.createElement('select');
-  newSelect.classList.add('dynamic-select');
-  newSelect.required = true; // Add required attribute
-  
-  // Create default option
-  const defaultOption = document.createElement('option');
-  defaultOption.value = '';
-  defaultOption.disabled = true;
-  defaultOption.selected = true;
-  defaultOption.textContent = 'Pilih nama kontributor / anggota...';
-  
-  newSelect.appendChild(defaultOption);
-
-  const selectedValues = new Set();
-
-  // Collect selected values from all selects
-  const allSelects = document.querySelectorAll('select');
-  allSelects.forEach(select => {
-    const selectedOption = select.querySelector('option:checked');
-    if (selectedOption && selectedOption.value) {
-      selectedValues.add(selectedOption.value);
+  $.ajax({
+    url: `${BASE_URL}/users/dosen/detail`,
+    type: 'GET',
+    headers: {
+      Authorization: `Bearer ${jwt}`
+    },
+    success: function(item) {
+      console.log(item)
+      $('#penulis').val(`${item.DosenUsers.UsersDetails.fullName}`);
+      $('#nip').val(item.nip);
+    },
+    error: function(xhr) {
+      console.error('Error fetching user details:', xhr);
+      alert('Failed to fetch user details. Please try again.');
     }
   });
 
-  // Add options to the new select, excluding selected ones
-  window.contributors.forEach(contributor => {
-    if (!selectedValues.has(contributor.dosen_id)) {
-      const option = document.createElement('option');
-      option.value = contributor.dosen_id;
-      option.textContent = contributor.nama_dosen;
-      newSelect.appendChild(option);
-    }
-  });
-
-  // Create container for select and delete button
-  const selectContainer = document.createElement('div');
-  selectContainer.classList.add('select-container');
-  selectContainer.appendChild(newSelect);
-
-  // Create delete button
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'X';
-  deleteButton.classList.add('delete-button');
-  deleteButton.addEventListener('click', () => {
-    container.removeChild(selectContainer);
-  });
-
-  // Append delete button to container
-  selectContainer.appendChild(deleteButton);
-
-  // Append new select to the container
-  container.appendChild(selectContainer);
-
-  // Log the new select
-  console.log('New Select:', newSelect);
-}
-
-// Function to gather selected contributor IDs and format them
-function getSelectedKontributors() {
-  const selects = document.querySelectorAll('select');
-  const selectedKontributors = Array.from(selects).flatMap(select => 
-    Array.from(select.querySelectorAll('option:checked')).map(option => option.value)
-  );
-
-  // Log the selected contributors
-  // console.log('Selected Kontributors:', selectedKontributors);
-
-  // Return as comma-separated string
-  return selectedKontributors.join(',');
-}
-
-// Call populateContributors when the page loads or at the appropriate time
-document.addEventListener('DOMContentLoaded', populateContributors);
-
-// Attach event listener to the button
-document.getElementById('tambahKontributor').addEventListener('click', addSelectField);
-
-
-
-
-async function fetchData(jwt) {
-  try {
-    const response = await fetch(`${BASE_URL}/users/detail/`, {
-      headers: {
-        Authorization: `Bearer ${jwt}`
-      }
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw new Error('Gagal mengambil data dari API');
-  }
-}
-
-// function gatherSelectedKontributors() {
-//   // Map to an array of strings without nesting
-//   const kontributorsArray = Array.from(document.querySelectorAll('#namaKontributor option:checked, #namaKontributor2 option:checked'))
-//     .map(option => option.value);
-
-//   // Log the result
-//   console.log('Kontributors Array:', kontributorsArray);
-  
-//   return kontributorsArray;
-// }
-
-
-
-
-let filesArray = []; // Array untuk melacak file yang dipilih
-
-async function setupFormSubmission(jwt) {
-  document.getElementById('submitForm').addEventListener('submit', async event => {
+  // Handle form submission
+  $('#submitForm').on('submit', async function(event) { // Tambahkan async di sini
     event.preventDefault();
 
-    // Kumpulkan data form
-    const formData = new FormData(document.getElementById('submitForm'));
+    const formData = new FormData(this);
+    const kontributor = [];
+    const kategori = [];
+    const indeks = [];
+    const penerbit = [];
 
-    // Kumpulkan kontributor yang dipilih sebagai array
-    const kontributorsArray = Array.from(document.querySelectorAll('#namaKontributor option:checked, .dynamic-select option:checked'))
-      .map(option => option.value);
+    // Collect kontributor data
+    $('#namaKontributor option:selected').each(function(index) {
+      kontributor.push({ [`kontributor[${index}][id]`]: $(this).val() });
+    });
+    $('.dynamic-select option:selected').each(function(index) {
+      kontributor.push({ [`kontributor[${index}][id]`]: $(this).val() });
+    });
+    // Collect kategori data
+    $('#kategori option:selected').each(function(index) {
+      kategori.push({ [`kategori[${index}][id]`]: $(this).val() });
+    });
+    $('#indeks option:selected').each(function(index) {
+      indeks.push({ [`indeks[${index}][id]`]: $(this).val() });
+    });
+    $('#penerbit option:selected').each(function(index) {
+      penerbit.push({ [`penerbit[${index}][id]`]: $(this).val() });
+    });
 
-    // Buat objek data dengan nilai form
-    const data = {
-      title: formData.get('title'),
-      title_eng: formData.get('title_eng'),
-      abstract: formData.get('abstract'),
-      abstract_eng: formData.get('abstract_eng'),
-      url_research: formData.get('url_research'),
-      kategori: Array.from(document.querySelectorAll('#kategori option:checked')).map(option => option.value).join(',')
-    };
+    // Append each field to FormData object
+    formData.set('judul', formData.get('judul'));
+    formData.set('judul_inggris', formData.get('judul_inggris'));
+    formData.set('jenis_id', formData.get('jenis_id') || ''); // Optional
+    formData.set('status_id', formData.get('status_id') || ''); // Optional
+    formData.set('url', formData.get('url'));
+    
+    // Append kontributor data
+    kontributor.forEach(function(item, index) {
+      Object.keys(item).forEach(function(key) {
+        formData.append(`kontributor[${index}][id]`, item[key]);
+      });
+    });
 
-    // Siapkan FormData untuk dikirim
-    const formDataToSend = new FormData();
+    // Append kategori data
+    kategori.forEach(function(item, index) {
+      Object.keys(item).forEach(function(key) {
+        formData.append(`kategori[${index}][id]`, item[key]);
+      });
+    });
 
-    // Tambahkan kontributor sebagai entri multiple dengan kunci yang sama
-    kontributorsArray.forEach(kontributor => formDataToSend.append('kontributor[]', kontributor));
+    indeks.forEach(function(item, index) {
+      Object.keys(item).forEach(function(key) {
+        formData.append(`indeks[${index}][id]`, item[key]);
+      });
+    });
 
-    // Tambahkan field data lainnya
-    for (const [key, value] of Object.entries(data)) {
-      formDataToSend.append(key, value);
-    }
+    penerbit.forEach(function(item, index) {
+      Object.keys(item).forEach(function(key) {
+        formData.append(`penerbit[${index}][id]`, item[key]);
+      });
+    });
 
-    // Tambahkan file dari filesArray
-    filesArray.forEach(file => formDataToSend.append('files', file));
+    // Append abstrak data
+    formData.append('abstrak[konten]', formData.get('konten'));
+    formData.append('abstrak[konten_inggris]', formData.get('konten_inggris'));
 
-    // Log FormData final untuk debugging
-    console.log('Final FormData:');
-    for (const [key, value] of formDataToSend.entries()) {
-      console.log(`${key}: ${value}`);
-    }
+    // Log data yang akan dikirim
+    console.log('Data kontributor yang akan dikirim:', kontributor);
+    console.log('Data kategori yang akan dikirim:', kategori);
+    console.log('Data indeks yang akan dikirim:', indeks);
+    console.log('Data penerbit yang akan dikirim:', penerbit);
+    console.log('Data form yang akan dikirim:', formData);
 
-    try {
-      // Kirim data ke server
-      const response = await fetch(`${BASE_URL}/researchs/private/create`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${jwt}`
-        },
-        body: formDataToSend
+    // Tampilkan konfirmasi sebelum mengirim data
+    const confirmed = await new Promise((resolve) => { // Sekarang await bisa digunakan
+      const modalHtml = `
+        <div class="modal fade" id="confirmSubmitModal" tabindex="-1" aria-labelledby="confirmSubmitModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmSubmitModalLabel">Konfirmasi Pengiriman</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Apakah Anda yakin ingin mengirim data ini?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger"  id="confirmSubmitButton">Kirim</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      $('body').append(modalHtml);
+      const modal = new bootstrap.Modal(document.getElementById('confirmSubmitModal'));
+      modal.show();
+
+      $('#confirmSubmitButton').on('click', function() {
+        resolve(true);
+        modal.hide();
+        $('#confirmSubmitModal').remove();
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Server returned error:', errorData);
-        throw new Error('Failed to submit data.');
-      }
+      $('.btn-close, .btn-secondary').on('click', function() {
+        resolve(false);
+        modal.hide();
+        $('#confirmSubmitModal').remove();
+      });
+    });
 
-      // Tangani pengiriman yang berhasil
-      document.getElementById('submitSuccessMessage').style.display = 'block';
-      const responseData = await response.json();
-      console.log('Data successfully submitted:', responseData);
-      console.log('Files successfully submitted:', filesArray); // Log berhasil untuk files
-      window.location.href = '/dashboard/dosen'; // Redirect ke dashboard
-
-    } catch (error) {
-      // Tangani error
-      console.error('Error:', error.message);
-      alert('Failed to submit data. Please try again.');
+    if (!confirmed) {
+      return; // Batalkan pengiriman jika pengguna tidak mengonfirmasi
     }
-  });
-}
 
-// Fungsi untuk menangani perubahan input file dan menampilkan ikon file
+    $.ajax({
+      url: `${BASE_URL}/document/penelitian`,
+      type: 'POST',
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      },
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        localStorage.setItem('toastMessage', 'Berhasil Input Berkas');
+        window.location.href = '/dashboard/dosen';
+
+        console.log('Data berhasil dikirim:', response);
+      },
+      error: function(error) {
+        console.error('Error submitting form:', error);
+        alert('Failed to submit form. Please try again.');
+        console.log('Data yang gagal dikirim:', formData);
+      }
+    });
+  });
+});
+
+
+let filesArray = [];
+
+filesArray.forEach(file => formDataToSend.append('files', file));
+
 function handleFileInputChange(event) {
   const fileInput = event.target;
   const newFiles = Array.from(fileInput.files);
@@ -369,29 +304,7 @@ document.getElementById('fileList').addEventListener('click', event => {
   }
 });
 
-
-
-
-
-
-function checkUserRoleAndBuildTable(jwt) {
-  function checkUserRoleFromJwt(jwt) {
-    try {
-      const jwtPayload = JSON.parse(atob(jwt.split('.')[1]));
-      return jwtPayload.role === 'dosen';
-    } catch (error) {
-      return false;
-    }
-  }
-
-  try {
-    const isValid = checkUserRoleFromJwt(jwt);
-    if (!isValid) {
-      window.location.href = '/403';
-      return;
-    }
-  } catch (error) {
-  }
-}
-
-
+$('input[name="cancelBtn"]').on('click', function(event) {
+  event.preventDefault(); 
+  window.location.href = '/dashboard'; 
+});

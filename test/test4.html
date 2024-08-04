@@ -11,6 +11,22 @@
     font-family: Arial, sans-serif;
     padding: 20px;
   }
+div .toast-body{
+  background-color: #f8d7da;
+  color: #721c24;
+}
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .btn {
+    margin-top: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -25,11 +41,46 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <script>
+
+  $(document).ready(function() {
+  // Periksa local storage untuk pesan toast
+  const toastMessage = localStorage.getItem('toastMessage');
+  
+  if (toastMessage) {
+    // Buat dan tampilkan toast
+    const toastContainer = $('.position-fixed');
+    if (toastContainer.length === 0) {
+      console.error('Toast container not found.');
+      return;
+    }
+
+    const toastEl = $(`
+      <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true"  data-autohide="false">
+        <div class="toast-header">
+          <strong class="me-auto">Notifikasi</strong>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          ${toastMessage}
+        </div>
+      </div>
+    `);
+
+    toastContainer.append(toastEl);
+
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+    
+
+    // Hapus pesan toast dari local storage
+    localStorage.removeItem('toastMessage');
+  }
+});
 function showToast() {
   // Buat elemen toast baru
   var toastElement = document.createElement('div');
   toastElement.classList.add('toast');
-  toastElement.setAttribute('data-autohide', 'true');
+  toastElement.setAttribute('data-autohide', 'false');
   toastElement.innerHTML = `
     <div class="toast-header">
       <strong class="mr-auto">Notifikasi</strong>
@@ -52,9 +103,7 @@ function showToast() {
   toast.show();
 
   // Sembunyikan toast setelah 1 detik
-  setTimeout(function() {
-    toast.hide();
-  }, 1000);
+
 }
 </script>
 

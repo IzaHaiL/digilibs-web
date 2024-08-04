@@ -30,28 +30,33 @@ document.addEventListener('DOMContentLoaded', () => {
       const jwt = getJwtFromCookies()
       try {
         const decodedJwt = decodeJwt(jwt)
-        const userRole = decodedJwt.role
-        const dashboardLink = document.getElementById('dashboard-link')
-
-        switch (userRole) {
+        const roles = decodedJwt && decodedJwt.roles ? decodedJwt.roles : [];
+        const role = roles.length > 0 ? roles[0].toLowerCase() : null;
+        const dashboardLink = document.getElementById('dashboard-link');
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'style';
+        link.href = '/assets/style/navbarsidebar.css';
+        document.head.appendChild(link);
+        switch (role) {
           case 'mahasiswa':
-            dashboardLink.href = '/src/public/frontend/dashboard/mahasiswa.html'
-            break
+            dashboardLink.href = '/src/public/frontend/dashboard/mahasiswa.html';
+            break;
           case 'dosen':
-            dashboardLink.href = '/src/public/frontend/dashboard/dosen.html'
-            break
+            dashboardLink.href = '/src/public/frontend/dashboard/dosen.html';
+            break;
           case 'prodi':
-            dashboardLink.href = '/src/public/frontend/dashboard/prodi.html'
-            break
+            dashboardLink.href = '/src/public/frontend/dashboard/prodi.html';
+            break;
           case 'fakultas':
-            dashboardLink.href = '/src/public/frontend/dashboard/fakultas.html'
-            break
+            dashboardLink.href = '/src/public/frontend/dashboard/fakultas.html';
+            break;
           case 'lppm':
-            dashboardLink.href = '/src/public/frontend/dashboard/lppm.html'
-            break
+            dashboardLink.href = '/src/public/frontend/dashboard/lppm.html';
+            break;
           default:
-            dashboardLink.href = '/src/public/frontend/dashboard/default.html'
-            break
+            dashboardLink.href = '/src/public/frontend/dashboard/default.html';
+            break;
         }
       } catch (error) {
         //   console.error('Error decoding or processing JWT:', error);
@@ -68,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadComponent('/components/sidebarfakultas.html', 'sidebarfakultas')
   loadComponent('/components/sidebarprodi.html', 'sidebarprodi')
   loadComponent('/components/sidebardosen.html', 'sidebardosen')
+  loadComponent('/components/sidebaradmin.html', 'sidebaradmin')
   loadComponent('/components/footer.html', 'footer')
   loadComponent('/components/advancesearch.html', 'searchlanjutan')
 })
@@ -131,14 +137,6 @@ window.addEventListener('click', function (event) {
   }
 })
 
-// var btnOpenModal = document.getElementById('btnOpenModal');
-// var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-
-// // Tambahkan event listener untuk membuka modal saat tombol diklik
-// btnOpenModal.addEventListener('click', function() {
-//     myModal.show();
-// });
-
 async function loadComponent (componentPath, elementId) {
   try {
     const response = await fetch(componentPath)
@@ -154,32 +152,37 @@ async function loadComponent (componentPath, elementId) {
       navbarUsername.textContent = `Hello, ${username}`
     }
     if (elementId === 'navbarlogin') {
-      const userRole = decodedToken.role
-      const dashboardLink = document.getElementById('dashboard-link')
+      const roles = decodedToken && decodedToken.roles ? decodedToken.roles : [];
+      const userRole = roles.length > 0 ? roles[0].toLowerCase() : null;
+      const dashboardLink = document.getElementById('dashboard-link');
       switch (userRole) {
         case 'mahasiswa':
-          dashboardLink.href =
-            '/dashboard'
-          break
+          dashboardLink.href = '/dashboard';
+          break;
         case 'dosen':
-          dashboardLink.href = '/dashboard/dosen'
-          break
+          dashboardLink.href = '/dashboard/dosen';
+          break;
         case 'prodi':
-          dashboardLink.href = '/dashboard/prodi'
-          break
+          dashboardLink.href = '/dashboard/prodi';
+          break;
         case 'fakultas':
-          dashboardLink.href = '/dashboard/fakultas'
-          break
-        case 'lppm': 
-          dashboardLink.href = '/dashboard/lppm'
-          break
+          dashboardLink.href = '/dashboard/fakultas';
+          break;
+        case 'lppm':
+          dashboardLink.href = '/dashboard/lppm';
+          break;
         default:
-          dashboardLink.href = '/dashboard/dosen' 
-          break
+          dashboardLink.href = '/dashboard/dosen';
+          break;
       }
     }
   } catch (error) {
   }
+  const link = document.createElement('link');
+  link.rel = 'preload';
+  link.as = 'style';
+  link.href = '/assets/style/navbarsidebar.css';
+  document.head.appendChild(link);
 }
 
 if (window.location.pathname.includes('home') && !window.location.pathname.includes('search') && !window.location.pathname.includes('detail')) {

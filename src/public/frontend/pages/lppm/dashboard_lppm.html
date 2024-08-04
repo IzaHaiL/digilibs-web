@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard LPPM</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   <link rel="stylesheet" href="/assets/style/dashboard_fakultas.css" />
 </head>
 <style>
   #myChart {
-    width: 100%;
-    height: 400px;
+    display: block; box-sizing: border-box; height: 400px; width: 800px;
   }
 </style>
 <body>
@@ -19,7 +20,7 @@
   <div id="main-wrapper">
     <div id="main-content">
       <div class="main-content-centered"> 
-        <h1 class="main-dashboard-title">Total Data Tahun <span id="selectedYear">(Tahun)</span>
+        <h1 class="main-dashboard-title">Total Data Tahun <span id="selectedYear">2024</span>
           <div class="main-selection-year">   
             <select id="yearSelect" class="form-select" aria-label="Select Year">
               <option selected>Open this select menu</option>
@@ -34,7 +35,7 @@
             <button id="searchButton">Cari</button>
           </div>
         </h1>
-        <h2 class="main-dashboard-title-sub">Berkas</h2>
+        <h2 class="main-dashboard-title-sub" id="totalData">Berkas</h2>
       </div>
     </div>
     <div id="sub-content">

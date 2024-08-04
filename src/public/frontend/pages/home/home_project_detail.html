@@ -7,6 +7,8 @@
     <title>DIGILIBS</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/assets/style/home_project_detail.css" />
 </head>
@@ -17,16 +19,16 @@
         <div id="main-content">
             <h1 class="main-content-title" id="judul"></h1>
             <div class="main-content-centered">
-                <table class="main-content-contered-table">
+                <table class="main-content-contered-table" id="table-info">
                     <tr>
                         <th>Penulis</th>
                         <td id="penulis"></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th>Kontributor</th>
                         <td id="kontributor"></td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr>
                         <th>Jenis Berkas</th>
                         <td id="jenis-berkas"></td>
                     </tr>
@@ -49,7 +51,7 @@
                     <tr>
                         <th>Link Jurnal</th>
                         <td id="link-jurnal"></td>
-                    </tr>
+                    </tr> -->
                 </table>
             </div>
             <div class="main-content-centered">

@@ -178,7 +178,7 @@
 
 
 
-    .label-fullname, .label-nik, .label-nim, .label-placeOfBirth, .label-dateOfBirth, .label-gender, .label-faculty, .label-studyProgram, .label-address, .label-email, .label-phone {
+    .label-fullname, .label-nik, .label-nim,.input-nip, .label-placeOfBirth, .label-dateOfBirth, .label-gender, .label-faculty, .label-studyProgram, .label-address, .label-email, .label-phone {
         margin-bottom: 8px;
         font-weight: bold;
         font-size: medium
@@ -186,7 +186,7 @@
         
     }
 
-    .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+    .input-fullname, .input-nik, .input-nim, .input-nip, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
         margin-top: 8px;
         margin-bottom: 10px;
         border: 1px solid #000000;
@@ -201,7 +201,7 @@
         align-self: stretch;
     }
 
-    .textarea-address, .input-email, .input-phone, .input-nik, .input-nim{
+    .textarea-address, .input-email, .input-phone, .input-nik,.input-nip, .input-nim{
         border-bottom-right-radius: 5px;
         border-top-right-radius: 5px;
         border-bottom-left-radius: 0;
@@ -306,7 +306,7 @@
             height: 200px;
         }
 
-        .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+        .input-fullname, .input-nik, .input-nim,.input-nip, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
             font-size: 12px;
             padding: 8px;
         }
@@ -355,7 +355,7 @@
             height: 150px;
         }
 
-        .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+        .input-fullname, .input-nik, .input-nim, .input-nip,.input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
             font-size: 10px;
             padding: 6px;
         }
@@ -372,7 +372,7 @@
             height: 100px;
         }
 
-        .input-fullname, .input-nik, .input-nim, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
+        .input-fullname, .input-nik, .input-nim,.input-nip, .input-placeOfBirth, .input-dateOfBirth, .input-facultySearch, .input-studyProgramSearch, .textarea-address, .input-email, .input-phone, .select-gender {
             font-size: 8px;
             padding: 4px;
         }

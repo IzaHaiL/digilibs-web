@@ -4,17 +4,20 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="globals.css" />
   <link rel="stylesheet" href="login.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="login">
     <div class="div">
       <div class="overlap-group">
         <div class="frame">
-          <div class="div-wrapper"><div class="text-wrapper">LOGIN</div></div>
+          <div class="div-wrapper">
+            <div class="text-wrapper">LOGIN</div>
+          </div>
           <div class="frame-2">
-            <form id="login-form" onsubmit="return redirectToLogin()">
+            <form id="login-form" onsubmit="return redirectToLogin(event)">
               <div class="frame-3">
-                <!-- Dropdown for login type -->
+                <!-- Dropdown for login type (commented out) -->
                 <!-- <div class="dropdown">
                   <select id="login-type" name="login-type" class="login-type">
                     <option value="mahasiswa">Mahasiswa</option>
@@ -40,7 +43,6 @@
               <button type="submit" class="frame-7">
                 <div class="text-wrapper-4">LOGIN</div>
               </button>
-              
             </form>
           </div>
         </div>
@@ -50,7 +52,6 @@
   </div>
 
   <script src="login.js"></script>
-  <script src="/assets/scripts/auth.js"> </script>
-
+  <script src="/assets/scripts/auth.js"></script>
 </body>
 </html>

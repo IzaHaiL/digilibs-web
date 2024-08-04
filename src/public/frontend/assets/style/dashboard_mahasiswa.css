@@ -44,6 +44,7 @@ body {
     color: #A00;
     padding: 40px 20px;
     margin: 40px;
+    font-weight: bolder;
 }
 .main-search-container {
     display: flex;
@@ -81,8 +82,8 @@ body {
 
 .main-content-pagination button {
     /* margin: 0 5px; */
-    width: 80px;
-    height: 40px;
+    /* width: 80px;
+    height: 40px; */
     background-color: #0F62FE;
     border-radius: 5px;
     color: white;
@@ -102,6 +103,15 @@ body {
     overflow-x: auto;
     margin: 40px;
 }
+#pageInput {
+    width: 100px; /* Atur lebar input halaman */
+    text-align: center; /* Pusatkan teks di dalam input */
+    margin: 0 5px; /* Beri margin di sekitar input */
+    border: 1px solid #ccc; /* Tambahkan border */
+    border-radius: 5px; /* Tambahkan border radius */
+    padding: 5px; /* Tambahkan padding */
+}
+
 @media only screen and (max-width: 768px) {
 
     #main-wrapper {
@@ -168,34 +178,34 @@ body {
         margin: 5px; /* Sesuaikan margin untuk layar kecil */
     }
 }
-table {
+/* table {
     width: 100%;
     ;
     border-collapse: collapse;
     
 }
 th {
-    width: 100%; /* Adjust width as needed */
-    background-color: #f2f4f8; /* Set background color for table headers */
-    white-space: nowrap; /* Prevent text wrapping */
-    padding: 8px 10px; /* Add some padding for better spacing */
-    text-align: left; /* Align text to the left */
+    width: 100%;
+    background-color: #f2f4f8; 
+    white-space: nowrap; 
+    padding: 8px 10px; 
+    text-align: left; 
     
 }
 
 td {
-    padding: 8px 10px; /* Add some padding for table data */
-    text-align: left; /* Align text to the left */
+    padding: 8px 10px; 
+    text-align: left;
 }
 
 th {
-    width: 20%; /* Set width for table header */
-    background-color: #f2f4f8; /* Changed table header background color */
+    width: 20%;
+    background-color: #f2f4f8; 
     padding: 16px 16px;
 }
 
 tr{
-    border-bottom: 1px solid #ddd; /* Add border between table rows */
+    border-bottom: 1px solid #ddd; 
 
 }
 
@@ -207,12 +217,12 @@ td button {
     cursor: pointer;
     margin-top: 5px;
     border-radius: 5px;
-    width: 40px; /* Set fixed width */
+    width: 40px; 
     height: 25px;
 }
 
 td button:hover {
-    background-color: #000000; /* Change button background color on hover */
+    background-color: #000000; 
 }
 .delete-btn {
     padding: 6px 10px;
@@ -222,4 +232,4 @@ td button:hover {
     cursor: pointer;
     margin-top: 5px;
     border-radius: 5px;
-}
+} */
