@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:8000'; // Change this as needed for different environments
+const BASE_URL = 'https://127.0.0.1:8000'; // Change this as needed for different environments
 
 $(document).ready(function() {
   const $searchButton = $("#searchButton");
@@ -16,7 +16,7 @@ $(document).ready(function() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(requestData), // Updated to match the required format
+        body: JSON.stringify(requestData), 
       });
 
       if (!response.ok) {
@@ -26,18 +26,15 @@ $(document).ready(function() {
       }
 
       const data = await response.json();
-
       // Log data yang diterima
       console.log("Data diterima:", data);
 
-      // Update main content title with keyword from the API response
       $mainContentTitle.text(`Keyword: ${data.keywords}`);
 
       function updateTable(data) {
-        $projectContainer.empty(); // Clear previous content
+        $projectContainer.empty(); 
 
         if (!data.similarities || data.similarities.length === 0) {
-          // No results found message
           const noResultsMessage = $("<div>").text("Tidak ada kesamaan.");
           $projectContainer.append(noResultsMessage);
         } else {
@@ -53,10 +50,7 @@ $(document).ready(function() {
 
             const $abstractElement = $("<div>").addClass("abstract project-abstract").html(`<p style="font-size: small; color: black; text-align: justify;">${item.text || '-'}</p>`);
             $titleElement.append($abstractElement);
-
-            // Append anchor to title element
             $titleElement.append($titleLink);
-
             const $contentElement = $("<div>").addClass("content project-content").html(`
               <div><i class="fas fa-calendar-alt"></i> ${item.dokumen.tanggal_upload ? new Date(item.dokumen.tanggal_upload).toLocaleDateString("en-US") : "-"}</div>
               <div><i class="fas fa-signal"></i> Similarity: ${item.similarity || "-"}</div>

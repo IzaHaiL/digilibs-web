@@ -1,5 +1,4 @@
-const BASE_URL = 'https://digilibs-api-pzhmw.ondigitalocean.app'; // Change this as needed for different environments
-
+const BASE_URL = 'http://localhost:3000'; // Change this as needed for different environments
 $(document).ready(function () {
   const prevBtn = $('#prevBtn');
   const nextBtn = $('#nextBtn');

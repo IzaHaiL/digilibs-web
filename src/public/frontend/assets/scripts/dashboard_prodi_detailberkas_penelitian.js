@@ -40,6 +40,8 @@ $(document).ready(function() {
   }
 
   function populateFormFields(data) {
+    $('#penulis').val(data.DokumenDosen.DokumenDosenDosen.DosenUsers.UsersDetails.fullName);
+    $('#nip').val(data.DokumenDosen.DokumenDosenDosen.nip);
       $('#status').val(data.BelongsToDokumenStatusDokumen.nama_status);
     $('#judul').val(data.judul);
     $('#judul_inggris').val(data.judul_inggris);

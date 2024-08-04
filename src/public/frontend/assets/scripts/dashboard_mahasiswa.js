@@ -7,7 +7,7 @@ $(document).ready(function () {
   const tableBody = $('tbody');
 
   let current_page = 1;
-  const itemsPerPage = 5;
+  const itemsPerPage = 4
   let total_pages = 55; // This will be updated based on the data fetched
 
   async function fetchData(jwt, page, pageSize) {

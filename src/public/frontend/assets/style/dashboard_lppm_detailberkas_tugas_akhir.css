@@ -120,7 +120,7 @@ body {
 
 
 
-.form-input input[name="penulis"], .form-input input[name="nim"], .form-input input[name="judul"], .form-input input[name="judul_inggris"], .form-input textarea[name="konten"], .form-input textarea[name="konten_inggris"], .form-input select[name="kategorifield"], .form-input input[name="url"], .form-input select[name="namaKontributor"], .form-input select[name="namaKontributor2"], .form-input select[name="indeks"], .form-input select[name="penerbit"] {
+.form-input input[name="penulis"], .form-input input[name="nim"], .form-input input[name="nip"], .form-input input[name="judul"], .form-input input[name="judul_inggris"], .form-input textarea[name="konten"], .form-input textarea[name="konten_inggris"], .form-input select[name="kategorifield"], .form-input input[name="url"], .form-input select[name="namaKontributor"], .form-input select[name="namaKontributor2"], .form-input select[name="indeks"], .form-input select[name="penerbit"], .form-input select.dynamic-select {
     width: 100%;
     box-sizing: border-box;
     padding: 8px;
@@ -259,7 +259,7 @@ div.select-container {
 }
 
 div.select-container button {
-    background-color: #A00;
+    background-color: #BDBDBD;
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 8px;
@@ -283,7 +283,7 @@ div.select-container button {
 }
 
 div.select-container button{  
-    background-color: #A00;
+    background-color: #BDBDBD;
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 8px;

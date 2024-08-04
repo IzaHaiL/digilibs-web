@@ -26,7 +26,7 @@ $(document).ready(function () {
           console.log('Data for year', year, ':', jsonData); // Tambahkan log ini
 
           // Ambil data Tugas_Akhir dan Penelitian dari jsonData
-          const labels = ['Tugas Akhir', 'Penelitian'];
+          const labels = ['Tugas Akhir'];
           const tugasAkhirData = [Number(jsonData['Tugas_Akhir']) || 0];
           const penelitianData = [Number(jsonData['Penelitian']) || 0];
 
@@ -41,17 +41,17 @@ $(document).ready(function () {
           const data = {
               labels: labels,
               datasets: [{
-                  label: 'Tugas Akhir',
-                  data: tugasAkhirData,
-                  backgroundColor: 'rgba(255, 99, 132, 1)',
-                  borderColor: 'rgba(255, 99, 132, 1)',
-                  borderWidth: 1
-              }, {
-                  label: 'Penelitian',
-                  data: penelitianData,
-                  backgroundColor: 'rgba(54, 162, 235, 1)',
-                  borderColor: 'rgba(54, 162, 235, 1)',
-                  borderWidth: 1
+                label: 'Tugas Akhir',
+                data: tugasAkhirData,
+                backgroundColor: 'rgba(217, 47, 47, 1)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Penelitian',
+                data: penelitianData,
+                backgroundColor: 'rgba(217, 47, 47, 1)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
               }]
           };
 
@@ -59,10 +59,15 @@ $(document).ready(function () {
               type: 'bar',
               data: data,
               options: {
-                  plugins: {
-                      title: {
-                          display: true,
-                      },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                              size: 14,
+                            }
+                        }
+                    },
                       datalabels: {
                           display: true,
                           color: 'white',
@@ -81,10 +86,10 @@ $(document).ready(function () {
                   maintainAspectRatio: false,
                   scales: {
                       x: {
-                          stacked: true,
+                          stacked: false,
                       },
                       y: {
-                          stacked: true
+                          stacked: false    
                       }
                   }
               },

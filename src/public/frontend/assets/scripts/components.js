@@ -184,7 +184,6 @@ async function loadComponent (componentPath, elementId) {
   link.href = '/assets/style/navbarsidebar.css';
   document.head.appendChild(link);
 }
-
 if (window.location.pathname.includes('home') && !window.location.pathname.includes('search') && !window.location.pathname.includes('detail')) {
   document.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbarhome');
@@ -200,11 +199,13 @@ if (window.location.pathname.includes('home') && !window.location.pathname.inclu
     }
   });
 } else if (window.location.pathname.includes('home/search') || window.location.pathname.includes('home/detail')) {
-  const navbar = document.querySelector('.navbarhome');
-  const logo = document.querySelector('.navbar-profile-img');
-  navbar.classList.add('scrolled');
-  logo.src = '/assets/image/logoitts.svg';
-  logo.style.transition = 'all 0.3s ease-in-out';
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbarhome');
+    const logo = document.querySelector('.navbar-profile-img');
+    navbar.classList.add('scrolled');
+    logo.src = '/assets/image/logoitts.svg';
+    logo.style.transition = 'all 0.3s ease-in-out';
+  });
 }
 
 

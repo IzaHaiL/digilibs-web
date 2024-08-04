@@ -23,20 +23,20 @@
 
   <div id="main-wrapper">
     <div class="dashboard-2">
-      <h1 class="dashboard-title">Detail Berkas Tugas Akhir</h1>
+      <h1 class="dashboard-title">Detail Berkas Penelitian</h1>
       <form class="submitform" id="submitForm" enctype="multipart/form-data" style="margin-top: 8px; gap:5px">
         <!-- Baris 0: Catatan -->
         <div class="form-row">
           <label for="catatan" class="form-label">Catatan:</label>
           <div class="form-input">
-            <textarea id="catatan" name="catatan" placeholder="Belum ada Catatan" rows="4"></textarea>
+            <textarea id="catatan" name="catatan" placeholder="Belum ada Catatan" disabled rows="4" style="background-color: #BDBDBD; "></textarea>
           </div>
         </div>
         <!-- Baris 1: Status -->
         <div class="form-row">
-          <label for="status" class="form-label">Status:</label>
+          <label for="status" class="form-label" disabled>Status:</label>
           <div class="form-input">
-            <select id="status" name="status">
+            <select id="status" name="status" disabled style="background-color: #BDBDBD; ">
               <option value="Pending">Pending</option>
     
             </select>
@@ -51,9 +51,9 @@
         </div>
         <!-- Baris 3: NIM -->
         <div class="form-row">
-          <label for="nim" class="form-label">NIM:</label>
+          <label for="nim" class="form-label">NIP:</label>
           <div class="form-input">
-            <input type="text" id="nim" name="nim" value="-" disabled />
+            <input type="text" id="nip" name="nip" value="-" disabled />
           </div>
         </div>
         <!-- Baris 4: Nama Kontributor / Anggota -->
@@ -156,8 +156,7 @@
         <div class="form-row submit-btn">
           <div class="form-label"></div>
           <div class="form-input">
-            <input type="submit" value="Cancel" name="cancelBtn" />
-            <input type="submit" id="updateButton" value="Verifikasi" name="submitBtn" />
+            <input type="submit" value="Kembali" name="cancelBtn" onclick="window.history.back();" />
           </div>
         </div>
       </form>
@@ -187,7 +186,7 @@
   </div>
 </div>
   <div id="footer"></div>
-  <script src="/assets/scripts/dashboard_lppm_detaiberkas_penelitian.js"></script>
+  <script src="/assets/scripts/dashboard_fakultas_detailberkas_penelitian.js"></script>
   <script src="/assets/scripts/components.js"></script>
   <script src="/assets/scripts/auth.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

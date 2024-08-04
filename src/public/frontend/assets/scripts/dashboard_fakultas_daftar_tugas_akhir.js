@@ -139,7 +139,7 @@ async function viewDetails (id) {
   const jwt = getJwtFromCookies() // Get JWT from cookies
 
   // Redirect to detail page
-  window.location.href = `/dashboard/lppm/detail/tugasakhir?id=${id}`
+  window.location.href = `/dashboard/fakultas/detail/tugasakhir?id=${id}`
 
   try {
     // Kirim permintaan ke endpoint dengan 

@@ -40,6 +40,8 @@ $(document).ready(function() {
   }
 
   function populateFormFields(data) {
+      $('#penulis').val(data.DokumenDosen.DokumenDosenDosen.DosenUsers.UsersDetails.fullName);
+      $('#nip').val(data.DokumenDosen.DokumenDosenDosen.nip);
       $('#status').val(data.BelongsToDokumenStatusDokumen.nama_status);
     $('#judul').val(data.judul);
     $('#judul_inggris').val(data.judul_inggris);
@@ -106,9 +108,9 @@ $(document).ready(function() {
       });
     });
   
-    function addSelectField(selectedValue = '', selectedText = '') {
+    function addSelectField(selectedValue = '', selectedText = '' ) {
       const container = $('#additionalContributors');
-      const newSelect = $('<select></select>').addClass('dynamic-select').prop('required', true);
+      const newSelect = $('<select></select>').addClass('dynamic-select').prop('required', true).prop('disabled', true);
       const defaultOption = $('<option></option>').val('').prop('disabled', true).prop('selected', true).text('Pilih nama kontributor / anggota...');
   
       newSelect.append(defaultOption);
@@ -135,9 +137,9 @@ $(document).ready(function() {
       }
   
       const selectContainer = $('<div></div>').addClass('select-container').append(newSelect);
-      const deleteButton = $('<button></button>').text('X').addClass('delete-button').on('click', function() {
+      const deleteButton = $('<button></button>').text('X').addClass('delete-button').prop('disabled', true).on('click', function() {
         selectContainer.remove();
-      });
+      }); 
   
       selectContainer.append(deleteButton);
       container.append(selectContainer);
@@ -474,7 +476,7 @@ function renderFileList() {
                 Apakah Anda yakin ingin memperbarui data ini?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="window.history.back();">Batal</button>
                 <button type="button" class="btn btn-danger"  id="confirmUpdateButton">Perbarui</button>
               </div>
             </div>

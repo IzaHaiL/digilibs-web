@@ -31,13 +31,13 @@ $(document).ready(function () {
                 datasets: [{
                     label: 'Tugas Akhir',
                     data: tugasAkhirData,
-                    backgroundColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(217, 47, 47, 1)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 }, {
                     label: 'Penelitian',
                     data: penelitianData,
-                    backgroundColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(47, 115, 217, 1)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }]
@@ -47,8 +47,13 @@ $(document).ready(function () {
                 data: data,
                 options: {
                     plugins: {
-                        title: {
-                            display: true,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                  size: 14,
+                                }
+                            }
                         },
                         datalabels: {
                             display: true,

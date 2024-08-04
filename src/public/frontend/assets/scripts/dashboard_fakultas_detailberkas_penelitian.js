@@ -40,6 +40,8 @@ $(document).ready(function() {
   }
 
   function populateFormFields(data) {
+    $('#penulis').val(data.DokumenDosen.DokumenDosenDosen.DosenUsers.UsersDetails.fullName);
+    $('#niop').val(data.DokumenDosen.DokumenDosenDosen.nip);
       $('#status').val(data.BelongsToDokumenStatusDokumen.nama_status);
     $('#judul').val(data.judul);
     $('#judul_inggris').val(data.judul_inggris);
@@ -520,7 +522,7 @@ function renderFileList() {
       }
 
       localStorage.setItem('toastMessage', 'Berhasil Update Berkas');
-      window.location.href = `/dashboard/lppm/daftar/penelitian`;
+      window.location.href = `/dashboard/fakultas/daftar/penelitian`;
     } catch (error) {
       console.error('Error updating project details:', error);
       alert('Gagal memperbarui detail project. Silakan coba lagi.');

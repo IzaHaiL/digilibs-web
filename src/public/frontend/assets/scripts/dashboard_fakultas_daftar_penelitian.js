@@ -1,5 +1,4 @@
-const BASE_URL = 'https://digilibs-api-pzhmw.ondigitalocean.app'; // Change this as needed for different environments
-
+const BASE_URL = 'http://localhost:3000'; // Change this as needed for different environments
 $(document).ready(function () {
   const prevBtn = $('#prevBtn');
   const nextBtn = $('#nextBtn');
@@ -7,13 +6,13 @@ $(document).ready(function () {
   const tableBody = $('tbody');
 
   let current_page = 1;
-  const itemsPerPage = 5;
-  let total_pages = 55; // This will be updated based on the data fetched
+  const itemsPerPage = 10;
+  let total_pages = 10; // This will be updated based on the data fetched
 
   async function fetchData(jwt, page, pageSize) {
     try {
       const response = await fetch(
-          `${BASE_URL}/document/penelitian/fakultas ?page=${page}&pageSize=${pageSize}`,
+          `${BASE_URL}/document/penelitian/fakultas?page=${page}&pageSize=${pageSize}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`
@@ -135,7 +134,7 @@ async function viewDetails (id) {
   const jwt = getJwtFromCookies() // Get JWT from cookies
 
   // Redirect to detail page
-  window.location.href = `/dashboard/lppm/detail/penelitian?id=${id}`
+  window.location.href = `/dashboard/fakultas/detail/penelitian?id=${id}`
 
   try {
     // Kirim permintaan ke endpoint dengan 

@@ -40,7 +40,9 @@ $(document).ready(function() {
   }
 
   function populateFormFields(data) {
-      $('#status').val(data.BelongsToDokumenStatusDokumen.nama_status);
+    $('#penulis').val(data.DokumenMahasiswa.DokumenMahasiswaMahasiswa.MahasiswaUsers.UsersDetails.fullName);
+    $('#nim').val(data.DokumenMahasiswa.DokumenMahasiswaMahasiswa.MahasiswaUsers.nim);
+    $('#status').val(data.BelongsToDokumenStatusDokumen.nama_status);
     $('#judul').val(data.judul);
     $('#judul_inggris').val(data.judul_inggris);
     $('#konten').val(data.DokumenAbstrak.konten);
@@ -368,7 +370,9 @@ function renderFileList() {
     modal.modal('show');
   }
 
-  
+  $('#cancelBtn').on('click', function() {
+    window.history.back();
+  });
   function getFormData() {
     const formData = new URLSearchParams();
     const selectedStatusId = $('#status option:selected').val();
@@ -402,7 +406,7 @@ function renderFileList() {
                 Apakah Anda yakin ingin memperbarui data ini?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="window.history.back();">Batal</button>
                 <button type="button" class="btn btn-danger"  id="confirmUpdateButton">Perbarui</button>
               </div>
             </div>
