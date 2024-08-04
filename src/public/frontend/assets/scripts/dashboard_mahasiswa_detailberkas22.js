@@ -1,6 +1,15 @@
 $(document).ready(function() {
-  const BASE_URL = 'https://digilibs-api-pzhmw.ondigitalocean.app'; // Update as necessary
-  // ... existing code ...
+  const BASE_URL = 'http://localhost:3000'; // Update as necessary
+  let filesArray = [];
+  let deleteIdArray = []; // Array of file IDs to be deleted
+  console.log('filesArray:', filesArray);
+  console.log('deleteIdArray:', deleteIdArray);
+
+
+  let originalFilesArray = [];
+  let originalContributors = [];
+  let originalCategories = [];
+  let originalData = {}; // Store the original data
   let jwt = getJwtFromCookies();
   let urlParams = new URLSearchParams(window.location.search);
   let id = urlParams.get('id');
