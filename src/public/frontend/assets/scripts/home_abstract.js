@@ -1,4 +1,4 @@
-const BASE_URL = 'https://127.0.0.1:8000'; // Change this as needed for different environments
+const BASE_URL = 'https://digilibs-api-pzhmw.ondigitalocean.app'; 
 
 $(document).ready(function() {
   const $searchButton = $("#searchButton");

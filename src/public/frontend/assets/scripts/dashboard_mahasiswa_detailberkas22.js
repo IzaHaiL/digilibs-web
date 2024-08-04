@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const BASE_URL = 'http://localhost:3000'; // Update as necessary
+  const BASE_URL = 'https://digilibs-api-pzhmw.ondigitalocean.app'; 
   let filesArray = [];
   let deleteIdArray = []; // Array of file IDs to be deleted
   console.log('filesArray:', filesArray);

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'; 
+const BASE_URL = 'https://digilibs-api-pzhmw.ondigitalocean.app'; 
 
 
 document.addEventListener('DOMContentLoaded', async () => {
