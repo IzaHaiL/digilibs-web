@@ -105,3 +105,25 @@ $(document).ready(function () {
     // Fetch initial data for the default year
     fetchData('2024');
 });
+
+$(document).ready(async function() {
+    const jwt = getJwtFromCookies();
+    function checkUserRoleFromJwt(jwt) {
+      try {
+        const jwtPayload = JSON.parse(atob(jwt.split('.')[1]));
+        const roles = jwtPayload && jwtPayload.roles ? jwtPayload.roles : [];
+        return roles.includes('Fakultas');
+      } catch (error) {
+        return false;
+      }
+    }
+    try {
+      const isValid = checkUserRoleFromJwt(jwt);
+      if (!isValid) {
+        window.location.href = '/403';
+        return;
+      }
+      buildTable(jwt);
+    } catch (error) {
+    }
+  });

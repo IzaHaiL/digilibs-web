@@ -25,7 +25,7 @@ app.get('/home/abstract', (req, res) => {
 });
 
 app.get('/dashboard/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin.html'));
+    res.sendFile(path.join(__dirname, 'src/public/frontend/pages/admin/dashboard_admin_daftarusr.html'));
 });
 
 app.get('/dashboard/admin/daftarusr', (req, res) => {

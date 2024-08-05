@@ -179,8 +179,9 @@
   </div>
 
   <script>
+    
     document.addEventListener('DOMContentLoaded', function() {
-      fetch('http://localhost:3000/admin/role')
+      fetch(`${BASE_URL}/admin/role`)
         .then(response => response.json())
         .then(data => {
           const roleSelect = document.getElementById('role');
@@ -192,7 +193,7 @@
           });
         });
 
-      fetch('http://localhost:3000/admin/prodi')
+      fetch(`${BASE_URL}/admin/prodi`)
         .then(response => response.json())
         .then(data => {
           const programStudiSelect = document.getElementById('programStudi');
@@ -204,7 +205,7 @@
           });
         });
 
-      fetch('http://localhost:3000/admin/fakultas')
+      fetch(`${BASE_URL}/admin/fakultas`)
         .then(response => response.json())
         .then(data => {
           const fakultasSelect = document.getElementById('fakultas');
@@ -216,7 +217,7 @@
           });
         });
 
-      fetch('http://localhost:3000/admin/lppm')
+      fetch(`${BASE_URL}/admin/lppm`)
         .then(response => response.json())
         .then(data => {
           const lppmSelect = document.getElementById('lppm');
@@ -322,7 +323,7 @@
           formData.profilePicture = document.getElementById('profilePicture').value || 'default.jpg';
           formData.nim = document.getElementById('nim').value || '';
           formData.prodiId = document.getElementById('programStudi').value || '';
-          url = 'http://localhost:3000/users/mahasiswa';
+          url = `${BASE_URL}/users/mahasiswa`;
         } else if (selectedRole === 'Dosen') {
           formData.fullName = document.getElementById('fullName').value || '';
           formData.address = document.getElementById('address').value || '';
@@ -331,16 +332,16 @@
           formData.profilePicture = document.getElementById('profilePicture').value || 'default.jpg';
           formData.nip = document.getElementById('nip').value || '';
           formData.prodiId = document.getElementById('programStudi').value || '';
-          url = 'http://localhost:3000/users/dosen';
+          url = `${BASE_URL}/users/dosen`;
         } else if (selectedRole === 'Fakultas') {
           formData.fakultasId = document.getElementById('fakultas').value || '';
-          url = 'http://localhost:3000/users/admin-fakultas';
+          url = `${BASE_URL}/users/admin-fakultas`;
         } else if (selectedRole === 'Prodi') {
           formData.prodiId = document.getElementById('programStudi').value || '';
-          url = 'http://localhost:3000/users/admin-prodi';
+          url = `${BASE_URL}/users/admin-prodi`;
         } else if (selectedRole === 'Lppm') {
           formData.lppmId = document.getElementById('lppm').value || '';
-          url = 'http://localhost:3000/admin/lppm';
+          url = `${BASE_URL}/admin/lppm`;
         }
 
         console.log('Data yang dikirim:', formData);

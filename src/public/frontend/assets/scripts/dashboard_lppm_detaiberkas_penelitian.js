@@ -607,3 +607,26 @@ function renderFileList() {
   // Initial call to disable submit button if no changes
   toggleSubmitButton();
 });
+
+
+$(document).ready(async function() {
+  const jwt = getJwtFromCookies();
+  function checkUserRoleFromJwt(jwt) {
+    try {
+      const jwtPayload = JSON.parse(atob(jwt.split('.')[1]));
+      const roles = jwtPayload && jwtPayload.roles ? jwtPayload.roles : [];
+      return roles.includes('Lppm');
+    } catch (error) {
+      return false;
+    }
+  }
+  try {
+    const isValid = checkUserRoleFromJwt(jwt);
+    if (!isValid) {
+      window.location.href = '/403';
+      return;
+    }
+    buildTable(jwt);
+  } catch (error) {
+  }
+});
